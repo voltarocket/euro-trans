@@ -7,7 +7,7 @@ import Footer from "../widgets/Footer"
 
 const App: React.FC = () => {
   return (
-      <Router>
+      <Router basename="/euro-trans">
         <Header/>
         <Routes>
           <Route path="/" element={<HomePage/>}/>

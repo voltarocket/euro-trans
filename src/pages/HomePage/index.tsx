@@ -14,23 +14,48 @@ const HomePage: React.FC = () => {
                 <p className="text-[24px]">*Выберите подходящий вариант для вашего бизнеса</p>
             </div>
         </div>
-            {/* <div className="pt-[83px] bg-[#07162C]">
-                <div className="flex flex-col justify-center items-center px-[157px] text-white">
+            <div className="pt-[83px] bg-[#07162C]">
+                <div className="flex flex-col justify-center items-center px-[157px] pb-[44px] text-white">
                     <p className="text-[72px] font-extrabold">О нас</p>
                     <p className="text-[32px]">Наша команда обладает многолетним опытом в сфере логистического сопровождения. Мы специализируемся на решении сложных задач и постоянно совершенствуем свои процессы, чтобы сделать оформление документов и транспортировку максимально удобными для вас. 
                         Наша главная цель — выстроить надежные партнерские отношения и оптимизировать внутреннюю логистику без потери качества.</p>
                 </div>
-                <div className="flex flex-col justify-center m-[44px] bg-[#E9EBEE] rounded-[20px]">
+                <div className="flex flex-col gap-[87px] items-center mx-[44px] bg-[#E9EBEE] rounded-[20px] pt-[76px] pb-[162px]">
                     <p className="text-[72px]">Почему стоит работать с нами</p>
-                    <div className="grid grid-cols-3 grid-rows-2">
-                        <div className="bg-[#344E74]">
+                    <div className="grid grid-cols-3 grid-rows-2 gap-[87px] text-white">
+                        <div className="bg-[#344E74] p-[29px] rounded-[20px] flex flex-col items-center justify-center">
                             <img src="" alt="" />
-                            <p>Лучшая цена на рынке </p>
-                            <p>Предлагаем выгодные условия благодаря анализу рынка.</p>
+                            <p className="text-[36px]">Лучшая цена на рынке </p>
+                            <p className="text-[24px] w-[386px]">Предлагаем выгодные условия благодаря анализу рынка.</p>
+                        </div>
+                        <div className="bg-[#344E74] p-[29px] rounded-[20px] flex flex-col items-center justify-center">
+                            <img src="" alt="" />
+                            <p className="text-[36px]">Лучшая цена на рынке </p>
+                            <p className="text-[24px] w-[386px]">Предлагаем выгодные условия благодаря анализу рынка.</p>
+                        </div>
+                        <div className="bg-[#344E74] p-[29px] rounded-[20px] flex flex-col items-center justify-center">
+                            <img src="" alt="" />
+                            <p className="text-[36px]">Лучшая цена на рынке </p>
+                            <p className="text-[24px] w-[386px]">Предлагаем выгодные условия благодаря анализу рынка.</p>
+                        </div>
+                        <div className="bg-[#344E74] p-[29px] rounded-[20px] flex flex-col items-center justify-center ">
+                            <img src="" alt="" />
+                            <p className="text-[36px]">Лучшая цена на рынке </p>
+                            <p className="text-[24px] w-[386px]">Предлагаем выгодные условия благодаря анализу рынка.</p>
+                        </div>
+                        <div className="bg-[#344E74] p-[29px] rounded-[20px] flex flex-col items-center justify-center">
+                            <img src="" alt="" />
+                            <p className="text-[36px]">Лучшая цена на рынке </p>
+                            <p className="text-[24px] w-[386px]">Предлагаем выгодные условия благодаря анализу рынка.</p>
+                        </div>
+                        <div className="bg-[#344E74] p-[29px] rounded-[20px] flex flex-col items-center justify-center">
+                            <img src="" alt="" />
+                            <p className="text-[36px]">Лучшая цена на рынке </p>
+                            <p className="text-[24px] w-[386px]">Предлагаем выгодные условия благодаря анализу рынка.</p>
                         </div>
                     </div>
                 </div>
-            </div> */}
+            </div>
         </div>
      )
 }
