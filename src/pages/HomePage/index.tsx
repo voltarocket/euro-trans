@@ -7,9 +7,9 @@ const HomePage: React.FC = () => {
             <div className="flex flex-col px-[39px]">
                 <p className="text-[72px] w-[1166px] font-extrabold mb-[43px]">Надежные логистические решения для вашего бизнеса</p>
                 <p className="text-[36px] w-[1100px] mb-[89px]">Доставка грузов на склады маркетплейсов и организация логистических перевозок по всей России</p>
-                <div className="flex flex-col gap-[32px] w-[593px] mb-[24px]">
-                    <button className="bg-[#344E74] hover:bg-[#4c6a97] active:bg-white border-1 border-[#344E74] active:text-[#344E74] text-white py-[40px] rounded-[20px]"><span className="text-[32px]">Логистические услуги по РФ</span></button>
-                    <button className="bg-[#344E74] hover:bg-[#4c6a97] active:bg-white border-1 border-[#344E74] active:text-[#344E74] text-white py-[40px] rounded-[20px]"><span className="text-[32px]">Доставка груза на маркетплейсы</span></button>
+                <div className="flex flex-col gap-[32px] w-[739px] mb-[24px]">
+                    <button className="bg-[#07162C] hover:bg-[#3f577d] active:bg-white border-1 border-[#344E74] active:text-[#344E74] text-white py-[40px] rounded-[20px]"><span className="text-[40px]">Логистические услуги по РФ</span></button>
+                    <button className="bg-[#07162C] hover:bg-[#344E74] active:bg-white border-1 border-[#344E74] active:text-[#344E74] text-white py-[40px] rounded-[20px]"><span className="text-[40px]">Доставка груза на маркетплейсы</span></button>
                 </div>
                 <p className="text-[24px]">*Выберите подходящий вариант для вашего бизнеса</p>
             </div>
