@@ -1,10 +1,10 @@
 import StagesCard from "./StagesCard";
-import one from "../../../shared/assets/images/One.png"
-import two from "../../../shared/assets/images/Two.png"
-import three from "../../../shared/assets/images/Three.png"
-import four from "../../../shared/assets/images/Four.png"
-import five from "../../../shared/assets/images/Five.png"
-import six from "../../../shared/assets/images/Six.png"
+import one from "../../../shared/assets/images/One.png";
+import two from "../../../shared/assets/images/Two.png";
+import three from "../../../shared/assets/images/Three.png";
+import four from "../../../shared/assets/images/Four.png";
+import five from "../../../shared/assets/images/Five.png";
+import six from "../../../shared/assets/images/Six.png";
 
 const stagesData = [
     {
@@ -33,19 +33,22 @@ const stagesData = [
     }
 ];
 
-const Stages:React.FC = () => {
+const Stages: React.FC = () => {
     return (
-        <div className="flex flex-col items-center justify-center px-[167px] pb-[103px]">
-            <div className="text-[72px] pb-[80px]">
+        <div className="flex flex-col items-center justify-center px-4 lg:px-[167px] pb-10 lg:pb-[103px]">
+            {/* Заголовок */}
+            <div className="text-4xl lg:text-[72px] pb-8 lg:pb-[80px] text-center">
                 Этапы работы
             </div>
-            <div className="grid grid-cols-3 grid-rows-2 gap-x-[37px] gap-y-[169px]">
-                {stagesData.map((stagesData, index) => (
-                    <StagesCard key={index} {...stagesData}/>
-                    ))}
+
+            {/* Сетка карточек */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-x-[37px] lg:gap-y-[169px]">
+                {stagesData.map((stage, index) => (
+                    <StagesCard key={index} {...stage} />
+                ))}
             </div>
         </div>
-           
-        )
-}
+    );
+};
+
 export default Stages;

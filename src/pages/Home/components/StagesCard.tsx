@@ -1,4 +1,4 @@
-import arrow from "../../../shared/assets/icons/Arrow 2.svg"
+import arrow from "../../../shared/assets/icons/Arrow.svg"
 
 interface StagesProps {
     image: string;

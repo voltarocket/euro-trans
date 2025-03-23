@@ -8,8 +8,8 @@ import five from "../../../shared/assets/images/Truck_5.png";
 import ten from "../../../shared/assets/images/Truck_10.png";
 import eurotruck from "../../../shared/assets/images/EuroTruck.png";
 import VehicleCard from "./VehicleCard";
-import right from "../../../shared/assets/icons/RightArrow.svg"
-import left from "../../../shared/assets/icons/LeftArrow.svg"
+import right from "../../../shared/assets/icons/RightArrow.svg";
+import left from "../../../shared/assets/icons/LeftArrow.svg";
 
 const vehicleData = [
     {
@@ -68,7 +68,7 @@ interface ButtonProps {
 const Button: React.FC<ButtonProps> = ({ onClick, children, className }) => {
     return (
         <button
-            className={`bg-[#E9EBEECC]/80 backdrop-blur-sm hover:bg-white p-6 rounded-full  ${className}`}
+            className={`bg-[#E9EBEECC]/80 backdrop-blur-sm hover:bg-white p-4 lg:p-6 rounded-full ${className}`}
             onClick={onClick}
         >
             {children}
@@ -95,31 +95,57 @@ const Vehicles: React.FC = () => {
         dots: true,
         infinite: true,
         speed: 500,
-        slidesToShow: 3,
+        slidesToShow: 3, // По умолчанию 3 слайда
         slidesToScroll: 3,
+        responsive: [
+            {
+                breakpoint: 1440, // На экранах меньше 1440px
+                settings: {
+                    slidesToShow: 3, // Все равно 3 слайда
+                    slidesToScroll: 3,
+                }
+            },
+            {
+                breakpoint: 1024, // На экранах меньше 1024px
+                settings: {
+                    slidesToShow: 2, // 2 слайда
+                    slidesToScroll: 2,
+                }
+            },
+            {
+                breakpoint: 768, // На экранах меньше 768px
+                settings: {
+                    slidesToShow: 1, // 1 слайд
+                    slidesToScroll: 1,
+                }
+            }
+        ]
     };
 
     return (
-        <div className="items-center py-[80px] relative"> {/* Добавляем relative для позиционирования кнопок */}
-            <div className="flex justify-center pb-[80px]">
-                <p className="text-[72px]">Транспорт под любые цели</p>
+        <div className="items-center py-10 lg:py-[80px] relative">
+            {/* Заголовок */}
+            <div className="flex justify-center pb-6 lg:pb-[80px]">
+                <p className="text-4xl lg:text-[72px] text-center">Транспорт под любые цели</p>
             </div>
 
+            {/* Слайдер */}
             <div className="slider-container">
                 <Slider ref={sliderRef} {...settings}>
                     {vehicleData.map((vehicleCard, index) => (
-                        <div className="px-[40px]" key={index}>
+                        <div className="px-2 lg:px-[40px]" key={index}>
                             <VehicleCard {...vehicleCard} />
                         </div>
                     ))}
                 </Slider>
 
-                <div className="absolute top-[58%] transform -translate-y-1/2 w-full flex justify-between px-4">
+                {/* Кнопки навигации */}
+                <div className="absolute top-[50%] transform -translate-y-1/2 w-full flex justify-between px-4">
                     <Button onClick={previous} className="left-0">
-                        <img className="h-[30px]" src={left} />
+                        <img className="h-6 lg:h-[30px]" src={left} alt="Left Arrow" />
                     </Button>
                     <Button onClick={next} className="right-0">
-                        <img className="h-[30px]" src={right} />
+                        <img className="h-6 lg:h-[30px]" src={right} alt="Right Arrow" />
                     </Button>
                 </div>
             </div>
