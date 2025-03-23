@@ -4,7 +4,7 @@ import truckimage from "../../../shared/assets/images/TruckImage.png";
 const Home: React.FC = () => {
     return (
         <div className="flex flex-col lg:flex-row">
-            <div className="flex flex-col pt-16 lg:pt-[256px] pl-4 lg:pl-[39px] pb-8 lg:pb-[89px]">
+            <div className="flex flex-col pt-16 lg:pt-[256px] pl-[39px] lg:pl-[39px] pb-8 lg:pb-[89px]">
                 <p className="text-4xl lg:text-[72px] font-extrabold mb-6 lg:mb-[43px]">
                     Надежные логистические решения для вашего бизнеса
                 </p>

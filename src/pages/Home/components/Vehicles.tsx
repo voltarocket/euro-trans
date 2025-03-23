@@ -95,27 +95,27 @@ const Vehicles: React.FC = () => {
         dots: true,
         infinite: true,
         speed: 500,
-        slidesToShow: 3, // По умолчанию 3 слайда
+        slidesToShow: 3, 
         slidesToScroll: 3,
         responsive: [
             {
-                breakpoint: 1440, // На экранах меньше 1440px
+                breakpoint: 1440, 
                 settings: {
-                    slidesToShow: 3, // Все равно 3 слайда
+                    slidesToShow: 3, 
                     slidesToScroll: 3,
                 }
             },
             {
-                breakpoint: 1024, // На экранах меньше 1024px
+                breakpoint: 1024, 
                 settings: {
-                    slidesToShow: 2, // 2 слайда
+                    slidesToShow: 2, 
                     slidesToScroll: 2,
                 }
             },
             {
-                breakpoint: 768, // На экранах меньше 768px
+                breakpoint: 768, 
                 settings: {
-                    slidesToShow: 1, // 1 слайд
+                    slidesToShow: 1, 
                     slidesToScroll: 1,
                 }
             }
@@ -124,12 +124,9 @@ const Vehicles: React.FC = () => {
 
     return (
         <div className="items-center py-10 lg:py-[80px] relative">
-            {/* Заголовок */}
             <div className="flex justify-center pb-6 lg:pb-[80px]">
                 <p className="text-4xl lg:text-[72px] text-center">Транспорт под любые цели</p>
             </div>
-
-            {/* Слайдер */}
             <div className="slider-container">
                 <Slider ref={sliderRef} {...settings}>
                     {vehicleData.map((vehicleCard, index) => (
@@ -138,8 +135,6 @@ const Vehicles: React.FC = () => {
                         </div>
                     ))}
                 </Slider>
-
-                {/* Кнопки навигации */}
                 <div className="absolute top-[50%] transform -translate-y-1/2 w-full flex justify-between px-4">
                     <Button onClick={previous} className="left-0">
                         <img className="h-6 lg:h-[30px]" src={left} alt="Left Arrow" />

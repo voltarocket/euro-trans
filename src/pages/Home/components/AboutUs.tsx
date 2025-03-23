@@ -44,8 +44,8 @@ const AboutUs: React.FC = () => {
     return (
         <div className="pt-10 lg:pt-[83px] bg-[#07162C] pb-10 lg:pb-[87px]">
             <div className="flex flex-col justify-center items-center px-4 lg:px-[157px] pb-6 lg:pb-[44px] text-white">
-                <p className="text-4xl lg:text-[72px] font-extrabold text-center">О нас</p>
-                <p className="text-lg lg:text-[32px] mb-8 lg:mb-[104px] text-center">
+                <p className="text-4xl lg:text-[72px] font-extrabold text-center pb-[62px]">О нас</p>
+                <p className="text-lg lg:text-[32px] mb-8 lg:mb-[104px] text-left">
                     Наша команда обладает многолетним опытом в сфере логистического сопровождения. Мы специализируемся на решении сложных задач и постоянно совершенствуем свои процессы, чтобы сделать оформление документов и транспортировку максимально удобными для вас. 
                     Наша главная цель — выстроить надежные партнерские отношения и оптимизировать внутреннюю логистику без потери качества.
                 </p>

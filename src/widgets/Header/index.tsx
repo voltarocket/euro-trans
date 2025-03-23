@@ -11,25 +11,7 @@ const Header: React.FC = () => {
     return (
         <div className="py-[24px] bg-[#E9EBEECC]/80 backdrop-blur-sm rounded-b-[20px] z-10 fixed w-full">
             <div className="container mx-auto px-4">
-                <div className="flex justify-between items-center">
-                    {/* Левые ссылки (скрываются на мобильных устройствах) */}
-                    <div className="hidden lg:flex gap-[102px] text-[24px] lg:text-[32px]">
-                        <a className="decoration-[#07162C] decoration-4 hover:underline underline-offset-8" href="">Главная</a>
-                        <a className="decoration-[#07162C] decoration-4 hover:underline underline-offset-8" href="">О нас</a>
-                        <a className="decoration-[#07162C] decoration-4 hover:underline underline-offset-8" href="">Транспорт</a>
-                    </div>
-
-                    {/* Логотип (всегда по центру) */}
-                    <img className="h-[80px] w-[80px] lg:h-[113px] lg:w-[120px]" src={logo} alt="Логотип" />
-
-                    {/* Правые ссылки (скрываются на мобильных устройствах) */}
-                    <div className="hidden lg:flex gap-[102px] text-[24px] lg:text-[32px]">
-                        <a className="decoration-[#07162C] decoration-4 hover:underline underline-offset-8" href="">Этапы</a>
-                        <a className="decoration-[#07162C] decoration-4 hover:underline underline-offset-8" href="">Услуги</a>
-                        <a className="decoration-[#07162C] decoration-4 hover:underline underline-offset-8" href="">Контакты</a>
-                    </div>
-
-                    {/* Бургер-меню для мобильных устройств */}
+                <div className="flex justify-between items-center"> 
                     <div className="lg:hidden">
                         <button onClick={toggleMenu} className="focus:outline-none">
                             <svg
@@ -48,12 +30,22 @@ const Header: React.FC = () => {
                             </svg>
                         </button>
                     </div>
+                    <div className="hidden lg:flex gap-[102px] text-[24px] lg:text-[32px]">
+                        <a className="decoration-[#07162C] decoration-4 hover:underline underline-offset-8" href="">Главная</a>
+                        <a className="decoration-[#07162C] decoration-4 hover:underline underline-offset-8" href="">О нас</a>
+                        <a className="decoration-[#07162C] decoration-4 hover:underline underline-offset-8" href="">Транспорт</a>
+                    </div>
+                    <img className="h-[80px] w-[80px] lg:h-[113px] lg:w-[120px]" src={logo} alt="Логотип" />
+                    <div className="hidden lg:flex gap-[102px] text-[24px] lg:text-[32px]">
+                        <a className="decoration-[#07162C] decoration-4 hover:underline underline-offset-8" href="">Этапы</a>
+                        <a className="decoration-[#07162C] decoration-4 hover:underline underline-offset-8" href="">Услуги</a>
+                        <a className="decoration-[#07162C] decoration-4 hover:underline underline-offset-8" href="">Контакты</a>
+                    </div>
+                    <div className="lg:hidden w-8 h-8"></div>
                 </div>
-
-                {/* Мобильное меню (открывается по клику на бургер) */}
                 {isMenuOpen && (
                     <div className="lg:hidden mt-4">
-                        <nav className="flex flex-col gap-4 text-[24px]">
+                        <nav className="flex flex-col items-center gap-4 text-[24px]">
                             <a className="decoration-[#07162C] decoration-4 hover:underline underline-offset-8" href="">Главная</a>
                             <a className="decoration-[#07162C] decoration-4 hover:underline underline-offset-8" href="">О нас</a>
                             <a className="decoration-[#07162C] decoration-4 hover:underline underline-offset-8" href="">Транспорт</a>
