@@ -15,7 +15,7 @@ const Header: React.FC = () => {
                     <div className="lg:hidden">
                         <button onClick={toggleMenu} className="focus:outline-none">
                             <svg
-                                className="w-8 h-8"
+                                className="w-13 h-13"
                                 fill="none"
                                 stroke="currentColor"
                                 viewBox="0 0 24 24"
@@ -25,18 +25,18 @@ const Header: React.FC = () => {
                                     strokeLinecap="round"
                                     strokeLinejoin="round"
                                     strokeWidth="2"
-                                    d="M4 6h16M4 12h16m-7 6h7"
+                                    d="M4 6h16M4 12h16M4 18h16"
                                 />
                             </svg>
                         </button>
                     </div>
-                    <div className="hidden lg:flex gap-[102px] text-[24px] lg:text-[32px]">
+                    <div className="hidden lg:flex gap-[102px] text-[32px] max-2xl:text-[24px]">
                         <a className="decoration-[#07162C] decoration-4 hover:underline underline-offset-8" href="">Главная</a>
                         <a className="decoration-[#07162C] decoration-4 hover:underline underline-offset-8" href="">О нас</a>
                         <a className="decoration-[#07162C] decoration-4 hover:underline underline-offset-8" href="">Транспорт</a>
                     </div>
-                    <img className="h-[80px] w-[80px] lg:h-[113px] lg:w-[120px]" src={logo} alt="Логотип" />
-                    <div className="hidden lg:flex gap-[102px] text-[24px] lg:text-[32px]">
+                    <img className="h-[80px] w-[80px] xl:h-[84px] xl:w-[89.5px] lg:h-[113px] lg:w-[120px] max-md:h-[68px] max-md:w-[72px] " src={logo} alt="Логотип" />
+                    <div className="hidden lg:flex gap-[102px] text-[32px] max-2xl:text-[24px]">
                         <a className="decoration-[#07162C] decoration-4 hover:underline underline-offset-8" href="">Этапы</a>
                         <a className="decoration-[#07162C] decoration-4 hover:underline underline-offset-8" href="">Услуги</a>
                         <a className="decoration-[#07162C] decoration-4 hover:underline underline-offset-8" href="">Контакты</a>
