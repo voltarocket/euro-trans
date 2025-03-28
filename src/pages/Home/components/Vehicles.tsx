@@ -1,7 +1,7 @@
+import { useRef, useState, useEffect } from "react";
+import Slider, { Settings } from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Slider, { Settings } from "react-slick";
-import { useRef } from "react";
 import standart from "../../../shared/assets/images/GazelStandart.png";
 import long from "../../../shared/assets/images/GazelLong.png";
 import five from "../../../shared/assets/images/Truck_5.png";
@@ -78,6 +78,17 @@ const Button: React.FC<ButtonProps> = ({ onClick, children, className }) => {
 
 const Vehicles: React.FC = () => {
     const sliderRef = useRef<Slider>(null);
+    const [isSwiping, setIsSwiping] = useState(false);
+
+    const disableScroll = () => {
+        document.body.style.overflow = "hidden";
+        document.body.style.touchAction = "none";
+    };
+
+    const enableScroll = () => {
+        document.body.style.overflow = "auto";
+        document.body.style.touchAction = "auto";
+    };
 
     const next = () => {
         if (sliderRef.current) {
@@ -91,41 +102,89 @@ const Vehicles: React.FC = () => {
         }
     };
 
+    useEffect(() => {
+        const sliderElement = sliderRef.current?.innerSlider?.list;
+
+        if (!sliderElement) return;
+
+        const handleTouchStart = () => {
+            disableScroll();
+        };
+
+        const handleTouchEnd = () => {
+            if (!isSwiping) enableScroll();
+        };
+
+        sliderElement.addEventListener("touchstart", handleTouchStart);
+        sliderElement.addEventListener("touchend", handleTouchEnd);
+
+        return () => {
+            sliderElement.removeEventListener("touchstart", handleTouchStart);
+            sliderElement.removeEventListener("touchend", handleTouchEnd);
+        };
+    }, [isSwiping]);
+
     const settings: Settings = {
         dots: true,
         infinite: true,
         speed: 500,
-        slidesToShow: 3, 
+        slidesToShow: 3,
+        centerMode: true,
+        centerPadding: "20px",
         slidesToScroll: 3,
+        beforeChange: () => {
+            setIsSwiping(true);
+            disableScroll();
+        },
+        afterChange: () => {
+            setIsSwiping(false);
+            enableScroll();
+        },
         responsive: [
             {
-                breakpoint: 1440, 
+                breakpoint: 1440,
                 settings: {
-                    slidesToShow: 3, 
-                    slidesToScroll: 3,
-                }
-            },
-            {
-                breakpoint: 1024, 
-                settings: {
-                    slidesToShow: 2, 
-                    slidesToScroll: 2,
-                }
-            },
-            {
-                breakpoint: 768, 
-                settings: {
-                    slidesToShow: 1, 
+                    slidesToShow: 3,
                     slidesToScroll: 1,
                 }
-            }
+            },
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 1,
+                }
+            },
+            {
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1,
+                }
+            },
+            {
+                breakpoint: 425,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                }
+            },
+            {
+                breakpoint: 375,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                }
+            },
         ]
     };
 
     return (
-        <div className="items-center py-10 lg:py-[80px] relative">
-            <div className="flex justify-center pb-6 lg:pb-[80px]">
-                <p className="text-4xl lg:text-[72px] text-center">Транспорт под любые цели</p>
+        <div className="items-center py-10 lg:py-[32px] relative rounded-t-[10px] bg-[#E9EBEE] -mt-[10px]">
+            <div className="flex justify-center pb-6 lg:pb-[32px]">
+                <p className="text-[20px] md:text-[32px] lg:text-[36px] xl:text-[48px] font-extrabold text-center">
+                    Транспорт под любые цели
+                </p>
             </div>
             <div className="slider-container">
                 <Slider ref={sliderRef} {...settings}>
@@ -135,7 +194,7 @@ const Vehicles: React.FC = () => {
                         </div>
                     ))}
                 </Slider>
-                <div className="absolute top-[50%] transform -translate-y-1/2 w-full flex justify-between px-4">
+                <div className="absolute top-[56%] transform -translate-y-1/2 w-full flex justify-between px-4">
                     <Button onClick={previous} className="left-0">
                         <img className="h-6 lg:h-[30px]" src={left} alt="Left Arrow" />
                     </Button>

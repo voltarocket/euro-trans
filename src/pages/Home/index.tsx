@@ -7,10 +7,10 @@ import Vehicles from "./components/Vehicles";
 const HomePage: React.FC = () => {
     return (
         <>
-            <Home />
-            <AboutUs />
-            <Vehicles />
-            <Stages />
+                <Home />
+                <AboutUs /> 
+                <Vehicles />
+                <Stages />
         </>
      )
 }

@@ -35,11 +35,11 @@ const stagesData = [
 
 const Stages: React.FC = () => {
     return (
-        <div className="flex flex-col items-center justify-center px-4 lg:px-[167px] pb-10 lg:pb-[103px]">
-            <div className="text-4xl lg:text-[72px] pb-8 lg:pb-[80px] text-center">
+        <div className="flex flex-col items-center justify-center px-[20px] md:px-0 pb-10 lg:pb-[103px]">
+            <div className="text-[20px] md:text-[32px] lg:text-[36px] xl:text-[48px] pb-[24px] lg:pb-[80px] font-extrabold text-center">
                 Этапы работы
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-x-[37px] lg:gap-y-[90px]">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-[16px] md:gap-x-[90px] md:gap-y-[43px] md:px-[92px]">
                 {stagesData.map((stage, index) => (
                     <StagesCard key={index} {...stage} />
                 ))}

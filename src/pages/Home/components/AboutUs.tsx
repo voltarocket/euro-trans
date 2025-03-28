@@ -42,40 +42,40 @@ const cardData = [
 
 const AboutUs: React.FC = () => {
     return (
-        <div className="pt-10 lg:pt-[83px] bg-[#07162C] pb-10 lg:pb-[87px]">
-            <div className="flex flex-col justify-center items-center px-4 lg:px-[157px] pb-6 lg:pb-[44px] text-white">
-                <p className="text-4xl lg:text-[72px] font-extrabold text-center pb-[62px]">О нас</p>
-                <p className="text-lg lg:text-[32px] mb-8 lg:mb-[104px] text-left">
-                    Наша команда обладает многолетним опытом в сфере логистического сопровождения. Мы специализируемся на решении сложных задач и постоянно совершенствуем свои процессы, чтобы сделать оформление документов и транспортировку максимально удобными для вас. 
-                    Наша главная цель — выстроить надежные партнерские отношения и оптимизировать внутреннюю логистику без потери качества.
+        <div className="pt-[42px] lg:pt-[64px] bg-[#07162C] pb-[80px] lg:pb-[80px] px-[20px] md:px-[40px] lg:px-[58px] -mt-[10px]">
+            <div className="flex flex-col justify-center items-center pb-6 lg:pb-[44px] text-white">
+                <p className="text-[20px] md:text-[32px] lg:text-[36px] xl:text-[48px] font-extrabold text-center pb-[16px] md:pb-[32px]">О нас</p>
+                <p className="text-[12px] md:text-[16px] xl:text-[24px] text-left">
+                    Наша команда обладает <strong>многолетним опытом</strong> в сфере логистического сопровождения. Мы специализируемся на решении сложных задач и постоянно совершенствуем свои процессы, чтобы сделать оформление документов и транспортировку максимально удобными для вас. 
+                    Наша <strong>главная цель</strong> — выстроить надежные партнерские отношения и оптимизировать внутреннюю логистику без потери качества.
                 </p>
             </div>
-            <div className="flex text-white flex-col lg:flex-row justify-center items-center gap-8 lg:gap-[169px] px-4 lg:px-[197px] pb-10 lg:pb-[167px]">
+            <div className="flex text-white flex-row justify-center gap-8 lg:gap-[169px] pb-10">
                 <div className="flex flex-col items-center lg:items-start w-full lg:w-[481px]">
-                    <div className="flex font-Kumar_one text-4xl lg:text-[72px]">
+                    <div className="flex text-[20px] md:text-[32px] xl:text-[64px]">
                         <AboutUsCounter target={24} duration={1500} />
                         <span>/7</span>
                     </div>
-                    <p className="text-lg lg:text-[32px] text-center lg:text-left">Поддержка и консультация для решения любых вопросов</p>
+                    <p className="text-[10px] md:text-[15px] xl:text-[24px] text-center lg:text-left">Поддержка и консультация для решения любых вопросов</p>
                 </div>
                 <div className="flex flex-col items-center lg:items-start w-full lg:w-[481px]">
-                    <div className="flex font-Kumar_one text-4xl lg:text-[72px]">
+                    <div className="flex text-[20px] md:text-[32px] xl:text-[64px]">
                         <AboutUsCounter target={25} duration={1500} />
                         <span>+</span>
                     </div>
-                    <p className="text-lg lg:text-[32px] text-center lg:text-left">Маршрутов доставки</p>
+                    <p className="text-[10px] md:text-[15px] xl:text-[24px] text-center lg:text-left">Маршрутов доставки</p>
                 </div>
                 <div className="flex flex-col items-center lg:items-start w-full lg:w-[481px]">
-                    <div className="flex font-Kumar_one text-4xl lg:text-[72px]">
+                    <div className="flex text-[20px] md:text-[32px] xl:text-[64px]">
                         <AboutUsCounter target={1000} duration={750} />
                         <span>+</span>
                     </div>
-                    <p className="text-lg lg:text-[32px] text-center lg:text-left">Успешных перевозок и довольных клиентов</p>
+                    <p className="text-[10px] md:text-[15px] xl:text-[24px] text-center lg:text-left">Успешных перевозок и довольных клиентов</p>
                 </div>
             </div>
-            <div className="flex flex-col gap-8 lg:gap-[87px] items-center mx-4 lg:mx-[44px] bg-[#E9EBEE] rounded-lg lg:rounded-[20px] pt-8 lg:pt-[76px] pb-10 lg:pb-[162px]">
-                <p className="text-4xl lg:text-[72px] text-center">Почему стоит работать с нами</p>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-[87px] text-white">
+            <div className="flex flex-col gap-8 items-center bg-[#E9EBEE] rounded-[20px] pt-8 pb-10 px-[26px]">
+                <p className="text-[20px] md:text-[32px] lg:text-[36px] xl:text-[48px] font-extrabold text-center">Почему стоит работать с нами</p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 text-white">
                     {cardData.map((card, index) => (
                         <AboutCard key={index} {...card} />
                     ))}

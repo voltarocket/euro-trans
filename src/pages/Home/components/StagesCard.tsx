@@ -7,20 +7,30 @@ interface StagesProps {
 
 const StagesCard: React.FC<StagesProps> = ({ image, description }) => {
     return (
-        <div className="grid grid-cols-1 sm:grid-cols-2 sm:grid-rows-2 gap-4 sm:gap-0">
+        <div className="sm:flex sm:items-center md:grid md:grid-cols-2 md:grid-rows-2 w-full min-w-[258px] md:min-w-[174px]">
+            <div className="flex items-center sm:hidden">
+                <img
+                    className="mr-4"
+                    src={image}
+                    alt="Этап"
+                />
+                <div className="text-[10px] flex-1">
+                    {description}
+                </div>
+            </div>
             <img
-                className="relative top-9 mx-auto sm:mx-0"
+                className="hidden md:block md:h-[59px] mx-auto sm:mx-0"
                 src={image}
                 alt="Этап"
             />
             <div className="hidden sm:flex items-center justify-center">
                 <img
-                    className="relative -left-20"
+                    className="w-[100px]"
                     src={arrow}
                     alt="Стрелка"
                 />
             </div>
-            <div className="col-span-1 sm:col-span-2 text-[40px] text-center sm:text-left">
+            <div className="hidden sm:block col-span-1 sm:col-span-2 text-[10px] md:text-[15px] xl:text-[24px] 2xl:text-[32px] text-left justify-self-start">
                 {description}
             </div>
         </div>

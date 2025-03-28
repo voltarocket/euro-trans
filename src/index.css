@@ -1,21 +1,19 @@
 @import "tailwindcss";
-@theme {
-  --font-counter:"Kumar_one"
-}
-@font-face {
-  font-family: Inter;
-  src: url(./shared/assets/fonts/Inter_28pt-Regular.ttf),
-        url(./shared/assets/fonts/Inter_24pt-Medium.ttf),
-          url(./shared/assets/fonts/Inter_24pt-ExtraBold.ttf);
-}
-@font-face {
-  font-family: Kumar_one;
-  src: url(./shared/assets/fonts/KumarOne-Regular.ttf);
+@tailwind utilities;
+
+html, body {
+  overscroll-behavior-y: contain;
+  height: 100%;
+  overflow-x: hidden;
 }
 
 :root {
   font-family: Inter;
   background-color: #E9EBEE;
+  color: #07162C;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 
   /* color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
