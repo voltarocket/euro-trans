@@ -25,7 +25,7 @@ const Home: React.FC = () => {
 
     return (
         <div className="flex flex-col md:flex-row rounded-b-[10px] overflow-hidden leading-none">
-            <div className="flex flex-col pt-[78px] md:pt-[120px] xl:pt-[184px] 2xl:pt-[206px] px-[20px] md:px-0 md:pl-[40px] lg:pr-[39px] pb-0 md:pb-[32px] lg:pb-[89px] bg-[#E9EBEE]">
+            <div className="flex flex-col pt-[78px] md:pt-[120px] xl:pt-[184px] 2xl:pt-[206px] px-[20px] md:pl-[40px] lg:pr-[39px] pb-0 md:pb-[32px] lg:pb-[89px] bg-[#E9EBEE]">
                 <p className="text-start text-[20px] sm:text-[30px] md:text-[32px] lg:text-[36px] xl:text-[48px] 2xl:text-[48px] 3xl:text-[72px] font-extrabold mb-6 lg:mb-[43px]">
                     Надежные логистические решения для вашего бизнеса
                 </p>
