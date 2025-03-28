@@ -45,7 +45,7 @@ const Header: React.FC = () => {
 
     return (
         <div className="py-[8px] lg:py-[11px] bg-[#E9EBEECC]/80 backdrop-blur-sm rounded-b-[20px] z-10 fixed w-full">
-            <div className="container mx-auto px-[39px] md:px-[] lg:px-[172px]">
+            <div className="container mx-auto px-[20px] lg:px-[172px]">
                 <div className="flex justify-between items-center"> 
                     <div className="lg:hidden">
                         <button 
