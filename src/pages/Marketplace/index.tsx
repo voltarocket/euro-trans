@@ -1,6 +1,12 @@
+import Home from "./components/Home";
+import MarketplaceForm from "./components/MarketplaceForm";
+
 const MarketPlacePage: React.FC = () => {
     return (
-            <div>Hello</div>
+            <>
+                <Home />
+                <MarketplaceForm />
+            </>
         )
 }
 export default MarketPlacePage;

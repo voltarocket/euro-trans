@@ -45,9 +45,9 @@ const Header: React.FC = () => {
 
     return (
         <div className="py-[8px] lg:py-[11px] bg-[#E9EBEECC]/80 backdrop-blur-sm rounded-b-[20px] z-10 fixed w-full">
-            <div className="container mx-auto px-[20px] md:px-[40px] lg:px-[172px]">
+            <div className="container mx-auto px-[20px] md:px-[40px] lg:px-[172px] xl:px-[137px]">
                 <div className="flex justify-between items-center"> 
-                    <div className="lg:hidden">
+                    <div className="lg:hidden flex items-center">
                         <button 
                             ref={menuButtonRef}
                             onClick={toggleMenu} 
@@ -86,13 +86,13 @@ const Header: React.FC = () => {
                             )}
                         </button>
                     </div>
-                    <div className="hidden lg:flex gap-[32px] text-[14px] ">
+                    <div className="hidden lg:flex gap-[32px] xl:gap-[48px] text-[14px] xl:text-[24px] ">
                         <a className="decoration-[#07162C] decoration-4 hover:underline underline-offset-8" href="">Главная</a>
                         <a className="decoration-[#07162C] decoration-4 hover:underline underline-offset-8" href="">О нас</a>
                         <a className="decoration-[#07162C] decoration-4 hover:underline underline-offset-8" href="">Транспорт</a>
                     </div>
-                    <img className="h-[38px] w-[40px] md:h-[56px] md:w-[60px] xl:h-[64.84px] xl:w-[69.09px]" src={logo} alt="Логотип" />
-                    <div className="hidden lg:flex gap-[32px] text-[14px] items-center">
+                    <img className="h-[38px] w-[40px] md:h-[56px] md:w-[60px] xl:h-[84px] xl:w-[90px]" src={logo} alt="Логотип" />
+                    <div className="hidden lg:flex gap-[32px] xl:gap-[48px] text-[14px] xl:text-[24px] items-center">
                         <a className="decoration-[#07162C] decoration-4 hover:underline underline-offset-8" href="">Этапы</a>
                         <div className="relative group">
                             <button 
@@ -101,7 +101,7 @@ const Header: React.FC = () => {
                             >
                                 Услуги
                                 <svg 
-                                    className={`ml-2 w-5 h-5 transition-transform ${isServicesOpen ? 'transform rotate-180' : ''}`}
+                                    className={`ml-2  w-5 h-5 transition-transform ${isServicesOpen ? 'transform rotate-180' : ''}`}
                                     fill="none" 
                                     stroke="currentColor" 
                                     viewBox="0 0 24 24" 

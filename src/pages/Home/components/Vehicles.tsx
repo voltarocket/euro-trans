@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from "react";
+import { useRef } from "react";
 import Slider, { Settings } from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -78,17 +78,6 @@ const Button: React.FC<ButtonProps> = ({ onClick, children, className }) => {
 
 const Vehicles: React.FC = () => {
     const sliderRef = useRef<Slider>(null);
-    const [isSwiping, setIsSwiping] = useState(false);
-
-    const disableScroll = () => {
-        document.body.style.overflow = "hidden";
-        document.body.style.touchAction = "none";
-    };
-
-    const enableScroll = () => {
-        document.body.style.overflow = "auto";
-        document.body.style.touchAction = "auto";
-    };
 
     const next = () => {
         if (sliderRef.current) {
@@ -102,28 +91,6 @@ const Vehicles: React.FC = () => {
         }
     };
 
-    useEffect(() => {
-        const sliderElement = sliderRef.current?.innerSlider?.list;
-
-        if (!sliderElement) return;
-
-        const handleTouchStart = () => {
-            disableScroll();
-        };
-
-        const handleTouchEnd = () => {
-            if (!isSwiping) enableScroll();
-        };
-
-        sliderElement.addEventListener("touchstart", handleTouchStart);
-        sliderElement.addEventListener("touchend", handleTouchEnd);
-
-        return () => {
-            sliderElement.removeEventListener("touchstart", handleTouchStart);
-            sliderElement.removeEventListener("touchend", handleTouchEnd);
-        };
-    }, [isSwiping]);
-
     const settings: Settings = {
         dots: true,
         infinite: true,
@@ -132,14 +99,6 @@ const Vehicles: React.FC = () => {
         centerMode: true,
         centerPadding: "20px",
         slidesToScroll: 3,
-        beforeChange: () => {
-            setIsSwiping(true);
-            disableScroll();
-        },
-        afterChange: () => {
-            setIsSwiping(false);
-            enableScroll();
-        },
         responsive: [
             {
                 breakpoint: 1440,
@@ -180,7 +139,7 @@ const Vehicles: React.FC = () => {
     };
 
     return (
-        <div className="items-center py-10 lg:py-[32px] relative rounded-t-[10px] bg-[#E9EBEE] -mt-[10px]">
+        <div className="items-center py-6 lg:pt-[32px] mb-[24px] relative rounded-t-[10px] bg-[#E9EBEE] -mt-[10px]">
             <div className="flex justify-center pb-6 lg:pb-[32px]">
                 <p className="text-[20px] md:text-[32px] lg:text-[36px] xl:text-[48px] font-extrabold text-center">
                     Транспорт под любые цели
