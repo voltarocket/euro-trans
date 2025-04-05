@@ -1,16 +1,16 @@
-import React, { useState, useRef, useEffect } from 'react';
+// import React, { useState, useRef, useEffect } from 'react';
 
 const CargoForm: React.FC = () => {
-    const [destination, setDestination] = useState<string>('Москва');
-    const [palletCount, setPalletCount] = useState<number>(1);
-    const [totalPrice, setTotalPrice] = useState<number>(8000);
-    const [phone, setPhone] = useState<string>('+7 ');
-    const [name, setName] = useState<string>('');
-    const [isDestinationOpen, setIsDestinationOpen] = useState(false);
-    const [isPalletOpen, setIsPalletOpen] = useState(false);
-    const phoneRef = useRef<HTMLInputElement>(null);
-    const destinationRef = useRef<HTMLDivElement>(null);
-    const palletRef = useRef<HTMLDivElement>(null);
+    // const [destination, setDestination] = useState<string>('Москва');
+    // const [palletCount, setPalletCount] = useState<number>(1);
+    // const [totalPrice, setTotalPrice] = useState<number>(8000);
+    // const [phone, setPhone] = useState<string>('+7 ');
+    // const [name, setName] = useState<string>('');
+    // const [isDestinationOpen, setIsDestinationOpen] = useState(false);
+    // const [isPalletOpen, setIsPalletOpen] = useState(false);
+    // const phoneRef = useRef<HTMLInputElement>(null);
+    // const destinationRef = useRef<HTMLDivElement>(null);
+    // const palletRef = useRef<HTMLDivElement>(null);
 
     // // Закрытие dropdown при клике вне его области
     // useEffect(() => {
@@ -164,11 +164,11 @@ const CargoForm: React.FC = () => {
     //     }
     // };
 
-    const cities = [
-        'Москва', 'Казань', 'Санкт-Петербург', 'Екатеринбург', 'Краснодар',
-        'Алексин', 'Ростов на Дону', 'Воронеж', 'Волгоград', 'Нижний Новгород',
-        'Рязань', 'Тверь', 'Невиномысск', 'Адыгейск', 'Котовск', 'Владимир', 'Ярославль'
-    ];
+    // const cities = [
+    //     'Москва', 'Казань', 'Санкт-Петербург', 'Екатеринбург', 'Краснодар',
+    //     'Алексин', 'Ростов на Дону', 'Воронеж', 'Волгоград', 'Нижний Новгород',
+    //     'Рязань', 'Тверь', 'Невиномысск', 'Адыгейск', 'Котовск', 'Владимир', 'Ярославль'
+    // ];
 
     return (
         <div className="pt-[32px] pb-[74px] bg-[#07162C] px-[20px] -mt-[10px] -mb-[20px]">

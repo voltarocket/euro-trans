@@ -1,5 +1,3 @@
-import { NavLink } from "react-router";
-
 const Home: React.FC = () => {
 
     return (
