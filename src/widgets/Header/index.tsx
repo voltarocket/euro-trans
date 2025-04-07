@@ -1,3 +1,4 @@
+import { NavLink } from "react-router";
 import { useState, useEffect, useRef } from "react";
 import logo from "../../shared/assets/images/EuroTransLogo.png";
 
@@ -45,7 +46,7 @@ const Header: React.FC = () => {
 
     return (
         <div className="py-[8px] lg:py-[11px] bg-[#E9EBEECC]/80 backdrop-blur-sm rounded-b-[20px] z-10 fixed w-full">
-            <div className="container mx-auto px-[20px] md:px-[40px] lg:px-[172px] xl:px-[137px]">
+            <div className="container mx-auto px-[20px] md:px-[40px] lg:px-[172px] xl:px-[174px] 2xl:px-[301.58px]">
                 <div className="flex justify-between items-center"> 
                     <div className="lg:hidden flex items-center">
                         <button 
@@ -86,13 +87,13 @@ const Header: React.FC = () => {
                             )}
                         </button>
                     </div>
-                    <div className="hidden lg:flex gap-[32px] xl:gap-[48px] text-[14px] xl:text-[24px] ">
+                    <div className="hidden lg:flex gap-[32px] xl:gap-[48px] text-[14px] xl:text-[20px] ">
                         <a className="decoration-[#07162C] decoration-4 hover:underline underline-offset-8" href="">Главная</a>
                         <a className="decoration-[#07162C] decoration-4 hover:underline underline-offset-8" href="">О нас</a>
                         <a className="decoration-[#07162C] decoration-4 hover:underline underline-offset-8" href="">Транспорт</a>
                     </div>
-                    <img className="h-[38px] w-[40px] md:h-[56px] md:w-[60px] xl:h-[84px] xl:w-[90px]" src={logo} alt="Логотип" />
-                    <div className="hidden lg:flex gap-[32px] xl:gap-[48px] text-[14px] xl:text-[24px] items-center">
+                    <img className="h-[38px] w-[40px] md:h-[56px] md:w-[60px] xl:h-[66px] xl:w-[70px]" src={logo} alt="Логотип" />
+                    <div className="hidden lg:flex gap-[32px] xl:gap-[48px] text-[14px] xl:text-[20px] items-center">
                         <a className="decoration-[#07162C] decoration-4 hover:underline underline-offset-8" href="">Этапы</a>
                         <div className="relative group">
                             <button 
@@ -113,8 +114,8 @@ const Header: React.FC = () => {
                             <div 
                                 className={`absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-20 ${isServicesOpen ? 'block' : 'hidden'}`}
                             >
-                                <a href="#" className="block px-4 py-2 text-gray-800 hover:bg-gray-100">Доставка по РФ</a>
-                                <a href="#" className="block px-4 py-2 text-gray-800 hover:bg-gray-100">Доставка на маркетплейсы</a>
+                                <NavLink to="/cargo" className="block px-4 py-2 text-gray-800 hover:bg-gray-100">Доставка по РФ</NavLink>
+                                <NavLink to="/marketplace" className="block px-4 py-2 text-gray-800 hover:bg-gray-100">Доставка на маркетплейсы</NavLink>
                             </div>
                         </div>
                         <a className="decoration-[#07162C] decoration-4 hover:underline underline-offset-8" href="">Контакты</a>
@@ -151,8 +152,8 @@ const Header: React.FC = () => {
                             <div 
                                 className={`flex flex-col items-center mt-2 ${isServicesOpen ? 'block' : 'hidden'}`}
                             >
-                                <a href="#" className="px-4 py-1 text-[16px]" onClick={closeMenu}>Доставка по РФ</a>
-                                <a href="#" className="px-4 py-1 text-[16px]" onClick={closeMenu}>Доставка на маркетплейсы</a>
+                                <NavLink to="/cargo" className="px-4 py-1 text-[16px]" onClick={closeMenu}>Доставка по РФ</NavLink>
+                                <NavLink to="/marketplace" className="px-4 py-1 text-[16px]" onClick={closeMenu}>Доставка на маркетплейсы</NavLink>
                             </div>
                         </div>
                         <a className="decoration-[#07162C] decoration-4 hover:underline underline-offset-8" href="" onClick={closeMenu}>Контакты</a>

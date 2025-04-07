@@ -171,68 +171,68 @@ const CargoForm: React.FC = () => {
     // ];
 
     return (
-        <div className="pt-[32px] pb-[74px] bg-[#07162C] px-[20px] -mt-[10px] -mb-[20px]">
+        <div className="pt-[32px] lg:pt-[64px] pb-[74px] lg:pb-[143px] bg-[#07162C] px-[20px] lg:px-[60px] -mt-[20px] -mb-[20px]">
             <div className="flex flex-col justify-center items-center text-white">
-                <p className="text-[20px] md:text-[32px] lg:text-[36px] xl:text-[48px] font-extrabold text-center pb-[16px] md:pb-[32px]">
+                <p className="text-[20px] md:text-[32px] lg:text-[36px] xl:text-[48px] font-extrabold text-center pb-[16px] md:pb-[32px] lg:pb-[64px]">
                 Оформление перевозки
                 </p>
                 <form className="w-full">
-                    <div className="grid grid-cols-2 grid-rows-[78px 58px 58px 58px 58px 58px 58px] gap-x-[10px] gap-y-[14px]">
+                    <div className="grid grid-cols-2 md:grid-cols-4 grid-rows-[78px 58px 58px 58px 58px 58px 58px] gap-x-[10px] md:gap-x-[20px] gap-y-[14px]">
                         <div className="flex flex-col col-span-2">
-                            <label className="text-[12px] mb-[8px]">Откуда</label>
+                            <label className="text-[12px] md:text-[16px] mb-[8px]">Откуда</label>
                             <input
-                                className="bg-white text-black py-[10px] px-[16px] rounded-[10px] text-[12px] border-b border-gray-200"
+                                className="bg-white text-black py-[10px] md:py-[20px] px-[16px] rounded-[10px] md:rounded-[20px] text-[12px] md:text-[16px] border-b border-gray-200"
                                 type="text"
                                 value="Иваново"
                                 disabled
                             />
-                            <p className="text-[10px] mt-[8px]">
+                            <p className="text-[10px] md:text-[16px] mt-[8px]">
                                 *Забор груза по г.Иваново - <strong>бесплатно</strong>
                             </p>
                         </div>
                         <div className="flex flex-col col-span-2">
-                            <label className="text-[12px] mb-[8px]">Куда</label>
+                            <label className="text-[12px] md:text-[16px] mb-[8px]">Куда</label>
                             <input
-                                className="bg-white text-black py-[10px] px-[16px] rounded-[10px] text-[12px] border-b border-gray-200"
+                                className="bg-white text-black py-[10px] md:py-[20px] px-[16px] rounded-[10px] md:rounded-[20px] text-[12px] md:text-[16px] border-b border-gray-200"
                                 type="text"
                             />
                         </div>
                         <div className="flex flex-col col-span-2">
-                            <label className="text-[12px] mb-[8px]">Вид груза</label>
+                            <label className="text-[12px] md:text-[16px] mb-[8px]">Вид груза</label>
                             <input
-                                className="bg-white text-black py-[10px] px-[16px] rounded-[10px] text-[12px] border-b border-gray-200"
+                                className="bg-white text-black py-[10px] md:py-[20px] px-[16px] rounded-[10px] md:rounded-[20px] text-[12px] md:text-[16px] border-b border-gray-200"
                                 type="text"
                             />
                         </div>
                         <div className="flex flex-col col span-1">
-                            <label className="text-[12px] mb-[8px]">Вес,кг</label>
+                            <label className="text-[12px] md:text-[16px] mb-[8px]">Вес,кг</label>
                             <input
-                                className="bg-white text-black py-[10px] px-[16px] rounded-[10px] text-[12px] border-b border-gray-200"
+                                className="bg-white text-black py-[10px] md:py-[20px] px-[16px] rounded-[10px] md:rounded-[20px] text-[12px] md:text-[16px] border-b border-gray-200"
                                 type="text"
                             />
                         </div>
                         <div className="flex flex-col col span-1">
-                            <label className="text-[12px] mb-[8px]">Объем, куб.м</label>
+                            <label className="text-[12px] md:text-[16px] mb-[8px]">Объем, куб.м</label>
                             <input
-                                className="bg-white text-black py-[10px] px-[16px] rounded-[10px] text-[12px] border-b border-gray-200"
+                                className="bg-white text-black py-[10px] md:py-[20px] px-[16px] rounded-[10px] md:rounded-[20px] text-[12px] md:text-[16px] border-b border-gray-200"
                                 type="text"
                             />
                         </div>
                         <div className="flex flex-col col-span-2">
-                            <label className="text-[12px] mb-[8px]">Имя</label>
+                            <label className="text-[12px] md:text-[16px] mb-[8px]">Имя</label>
                             <input
-                                className="bg-white text-black py-[10px] px-[16px] rounded-[10px] text-[12px] border-b border-gray-200"
+                                className="bg-white text-black py-[10px] md:py-[20px] px-[16px] rounded-[10px] md:rounded-[20px] text-[12px] border-b md:text-[16px] border-gray-200"
                                 type="text"
                             />
                         </div>
                         <div className="flex flex-col col-span-2">
-                            <label className="text-[12px] mb-[8px]">Телефон</label>
+                            <label className="text-[12px] md:text-[16px] mb-[8px]">Телефон</label>
                             <input
-                                className="bg-white text-black py-[10px] px-[16px] rounded-[10px] text-[12px] border-b border-gray-200"
+                                className="bg-white text-black py-[10px] md:py-[20px] px-[16px] rounded-[10px] md:rounded-[20px] text-[12px] border-b md:text-[16px] border-gray-200"
                                 type="text"
                             />
                         </div>
-                        <button className="flex justify-center items-center bg-[#344E74] hover:bg-[#506fa1] active:bg-white border-1 border-[#344E74] active:text-[#344E74] text-white text-[14px] h-[37px] col-span-2 rounded-[10px] transition-colors mt-[18px]">Заказать</button>
+                        <button className="flex justify-center items-center bg-[#344E74] hover:bg-[#506fa1] active:bg-white border-1 border-[#344E74] active:text-[#344E74] text-white md:font-bold text-[14px] md:text-[24px] xl:text-[36px] h-[37px] md:h-[64px] xl:h-[84px] col-span-2 md:col-span-4 rounded-[20px] transition-colors mt-[18px]">Заказать</button>
                     </div>
                 </form>
             </div>
