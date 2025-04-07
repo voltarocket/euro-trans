@@ -1,10 +1,14 @@
-import Home from "./components/Home";
 import MarketplaceForm from "./components/MarketplaceForm";
+import MarketplaceHome from "./components/MarketplaceHome";
+import MarketplaceFbo from "./components/MarketplaceFbo";
+import MarketplaceItem from "./components/MarketplaceItem";
 
 const MarketPlacePage: React.FC = () => {
     return (
             <>
-                <Home />
+                <MarketplaceHome />
+                <MarketplaceFbo />
+                <MarketplaceItem />
                 <MarketplaceForm />
             </>
         )

@@ -1,4 +1,4 @@
-import { NavLink } from "react-router";
+import { NavLink, Link } from "react-router";
 import { useState, useEffect, useRef } from "react";
 import logo from "../../shared/assets/images/EuroTransLogo.png";
 
@@ -44,6 +44,8 @@ const Header: React.FC = () => {
         };
     }, [isMenuOpen]);
 
+    
+
     return (
         <div className="py-[8px] lg:py-[11px] bg-[#E9EBEECC]/80 backdrop-blur-sm rounded-b-[20px] z-10 fixed w-full">
             <div className="container mx-auto px-[20px] md:px-[40px] lg:px-[172px] xl:px-[174px] 2xl:px-[301.58px]">
@@ -88,13 +90,13 @@ const Header: React.FC = () => {
                         </button>
                     </div>
                     <div className="hidden lg:flex gap-[32px] xl:gap-[48px] text-[14px] xl:text-[20px] ">
-                        <a className="decoration-[#07162C] decoration-4 hover:underline underline-offset-8" href="">Главная</a>
-                        <a className="decoration-[#07162C] decoration-4 hover:underline underline-offset-8" href="">О нас</a>
-                        <a className="decoration-[#07162C] decoration-4 hover:underline underline-offset-8" href="">Транспорт</a>
+                        <Link to="/#home" className="decoration-[#07162C] decoration-4 hover:underline underline-offset-8">Главная</Link>
+                        <Link to="/#about" className="decoration-[#07162C] decoration-4 hover:underline underline-offset-8">О нас</Link>
+                        <Link to="" className="decoration-[#07162C] decoration-4 hover:underline underline-offset-8">Транспорт</Link>
                     </div>
                     <img className="h-[38px] w-[40px] md:h-[56px] md:w-[60px] xl:h-[66px] xl:w-[70px]" src={logo} alt="Логотип" />
                     <div className="hidden lg:flex gap-[32px] xl:gap-[48px] text-[14px] xl:text-[20px] items-center">
-                        <a className="decoration-[#07162C] decoration-4 hover:underline underline-offset-8" href="">Этапы</a>
+                        <Link to="" className="decoration-[#07162C] decoration-4 hover:underline underline-offset-8">Этапы</Link>
                         <div className="relative group">
                             <button 
                                 onClick={toggleServices}
@@ -118,7 +120,7 @@ const Header: React.FC = () => {
                                 <NavLink to="/marketplace" className="block px-4 py-2 text-gray-800 hover:bg-gray-100">Доставка на маркетплейсы</NavLink>
                             </div>
                         </div>
-                        <a className="decoration-[#07162C] decoration-4 hover:underline underline-offset-8" href="">Контакты</a>
+                        <Link to="" className="decoration-[#07162C] decoration-4 hover:underline underline-offset-8">Контакты</Link>
                     </div>
                     <div className="lg:hidden w-8 h-8"></div>
                 </div>
@@ -129,10 +131,10 @@ const Header: React.FC = () => {
                     className={`lg:hidden overflow-hidden transition-all duration-300 ease-in-out ${isMenuOpen ? "max-h-96 mt-4" : "max-h-0"}`}
                 >
                     <nav className="flex flex-col items-center gap-2 text-[18px] py-2">
-                        <a className="" href="" onClick={closeMenu}>Главная</a>
-                        <a className="" href="" onClick={closeMenu}>О нас</a>
-                        <a className="" href="" onClick={closeMenu}>Транспорт</a>
-                        <a className="" href="" onClick={closeMenu}>Этапы</a>
+                        <Link to="/" onClick={closeMenu}>Главная</Link>
+                        <Link to="#about" onClick={closeMenu}>О нас</Link>
+                        <Link to="" onClick={closeMenu}>Транспорт</Link>
+                        <Link to="" onClick={closeMenu}>Этапы</Link>
                         <div className="flex flex-col items-center">
                             <button 
                                 onClick={toggleServices}
@@ -156,7 +158,7 @@ const Header: React.FC = () => {
                                 <NavLink to="/marketplace" className="px-4 py-1 text-[16px]" onClick={closeMenu}>Доставка на маркетплейсы</NavLink>
                             </div>
                         </div>
-                        <a className="decoration-[#07162C] decoration-4 hover:underline underline-offset-8" href="" onClick={closeMenu}>Контакты</a>
+                        <Link to="" onClick={closeMenu}>Контакты</Link>
                     </nav>
                 </div>
             </div>

@@ -1,3 +1,4 @@
+import { forwardRef } from "react";
 import AboutUsCounter from "./AboutUsCounter";
 import AboutCard from "./AboutCard";
 import price from "../../../shared/assets/icons/Price.svg";
@@ -6,6 +7,10 @@ import timer from "../../../shared/assets/icons/Timer.svg";
 import checkbox from "../../../shared/assets/icons/CheckBox.svg";
 import document from "../../../shared/assets/icons/Document.svg";
 import truck from "../../../shared/assets/icons/Truck.svg";
+
+interface AboutUsProps {
+  id?: string;
+}
 
 const cardData = [
     {
@@ -40,9 +45,13 @@ const cardData = [
     }
 ];
 
-const AboutUs: React.FC = () => {
+const AboutUs = forwardRef<HTMLDivElement, AboutUsProps>((props, ref) => {
     return (
-        <div className="pt-[42px] bg-[#07162C] pb-[32px] lg:pb-[80px] px-[20px] md:px-[40px] lg:px-[60px] -mt-[10px]">
+        <div 
+            id={props.id || "about"}
+            ref={ref}
+            className="pt-[42px] bg-[#07162C] pb-[32px] lg:pb-[80px] px-[20px] md:px-[40px] lg:px-[60px] -mt-[10px] scroll-mt-[80px]"
+        >
             <div className="flex flex-col justify-center items-center pb-[32px] text-white">
                 <p className="text-[20px] md:text-[32px] lg:text-[36px] xl:text-[48px] font-extrabold text-center pb-[16px] md:pb-[32px]">О нас</p>
                 <div className="text-[12px] md:text-[16px] xl:text-[24px] text-justify">
@@ -89,6 +98,6 @@ const AboutUs: React.FC = () => {
             </div>
         </div>
     );
-};
+});
 
 export default AboutUs;
