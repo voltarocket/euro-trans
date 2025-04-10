@@ -4,11 +4,11 @@ import three from "../../../shared/assets/images/Three-w.png"
 
 const MarketplaceFbo:React.FC = () => {
     return (
-        <div className="pt-[42px] bg-[#07162C] pb-[42px] lg:pb-[80px] px-[20px] md:px-[40px] lg:px-[60px] -mt-[10px]">
+        <div className="pt-[42px] bg-[#07162C] pb-[52px] lg:pb-[80px] px-[20px] md:px-[40px] lg:px-[60px] -mt-[10px]">
         <div className="flex flex-col justify-center items-center text-white">
             <p className="text-[20px] md:text-[32px] lg:text-[36px] xl:text-[48px] font-extrabold text-center pb-[16px] md:pb-[32px]">Почему отправка по FBO на склады других регионов выгодна?</p>
             <div className="flex flex-col md:flex-row gap-[32px]">
-                <div className="flex-flex-col gap-[32px]">
+                <div className="flex flex-col gap-[32px] md:justify-center">
                     <div className="flex gap-[24px]">
                         <img className="h-[46px] w-[40px]" src={one} alt="" />
                             <div className="">
