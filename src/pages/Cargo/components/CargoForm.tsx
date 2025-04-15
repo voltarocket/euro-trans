@@ -152,7 +152,7 @@ const CargoForm: React.FC = () => {
                         <div className="flex flex-col col-span-2">
                             <label className="text-[12px] md:text-[16px] mb-[8px]">Откуда</label>
                             <input
-                                className="bg-white text-black py-[10px] md:py-[20px] px-[16px] rounded-[10px] md:rounded-[20px] text-[12px] md:text-[16px] border-b border-gray-200"
+                                className="bg-white text-black py-[10px] md:py-[20px] px-[16px] rounded-[10px] text-[12px] md:text-[16px] border-b border-gray-200"
                                 type="text"
                                 value="Иваново"
                                 disabled
@@ -164,7 +164,7 @@ const CargoForm: React.FC = () => {
 
                         <div className="flex flex-col col-span-2 relative" ref={destinationRef}>
                             <label className="text-[12px] md:text-[16px] mb-[8px]">Куда</label>
-                            <div className={`bg-white text-black py-[8px] md:py-[15px] px-[16px] text-[12px] md:text-[16px] border-b border-gray-200 w-full cursor-pointer flex justify-between items-center transition-[border-radius] ${isDestinationOpen ? 'duration-100' : 'duration-200 delay-200'} ${isDestinationOpen ? 'rounded-t-[10px] rounded-b-none' : 'rounded-[10px]'}`}
+                            <div className={`bg-white text-black py-[8px] md:py-[20px] px-[16px] text-[12px] md:text-[16px] border-b border-gray-200 w-full cursor-pointer flex justify-between items-center transition-[border-radius] ${isDestinationOpen ? 'duration-100' : 'duration-200 delay-200'} ${isDestinationOpen ? 'rounded-t-[10px] rounded-b-none' : 'rounded-[10px]'}`}
                                 onClick={() => setIsDestinationOpen(!isDestinationOpen)}>
                                 <span>{destination || 'Select city'}</span>
                                 <svg 
@@ -198,7 +198,7 @@ const CargoForm: React.FC = () => {
                         <div className="flex flex-col col-span-2">
                             <label className="text-[12px] md:text-[16px] mb-[8px]">Вид груза</label>
                             <input
-                                className="bg-white text-black py-[10px] md:py-[20px] px-[16px] rounded-[10px] md:rounded-[20px] text-[12px] md:text-[16px] border-b border-gray-200"
+                                className="bg-white text-black py-[10px] md:py-[20px] px-[16px] rounded-[10px] text-[12px] md:text-[16px] border-b border-gray-200"
                                 type="text"
                             />
                         </div>
@@ -206,7 +206,7 @@ const CargoForm: React.FC = () => {
                         <div className="flex flex-col col span-1">
                             <label className="text-[12px] md:text-[16px] mb-[8px]">Вес,кг</label>
                             <input
-                                className="bg-white text-black py-[10px] md:py-[20px] px-[16px] rounded-[10px] md:rounded-[20px] text-[12px] md:text-[16px] border-b border-gray-200"
+                                className="bg-white text-black py-[10px] md:py-[20px] px-[16px] rounded-[10px] text-[12px] md:text-[16px] border-b border-gray-200"
                                 type="text"
                             />
                         </div>
@@ -214,7 +214,7 @@ const CargoForm: React.FC = () => {
                         <div className="flex flex-col col span-1">
                             <label className="text-[12px] md:text-[16px] mb-[8px]">Объем, куб.м</label>
                             <input
-                                className="bg-white text-black py-[10px] md:py-[20px] px-[16px] rounded-[10px] md:rounded-[20px] text-[12px] md:text-[16px] border-b border-gray-200"
+                                className="bg-white text-black py-[10px] md:py-[20px] px-[16px] rounded-[10px] text-[12px] md:text-[16px] border-b border-gray-200"
                                 type="text"
                             />
                         </div>
@@ -222,7 +222,7 @@ const CargoForm: React.FC = () => {
                         <div className="flex flex-col col-span-2">
                             <label className="text-[12px] md:text-[16px] mb-[8px]">Имя</label>
                             <input
-                                className="bg-white text-black py-[10px] md:py-[20px] px-[16px] rounded-[10px] md:rounded-[20px] text-[12px] border-b md:text-[16px] border-gray-200"
+                                className="bg-white text-black py-[10px] md:py-[20px] px-[16px] rounded-[10px] text-[12px] border-b md:text-[16px] border-gray-200"
                                 type="text"
                             />
                         </div>
@@ -231,7 +231,7 @@ const CargoForm: React.FC = () => {
                             <label className="text-[12px] md:text-[16px] mb-[8px]">Телефон</label>
                             <input
                                 ref={phoneRef}
-                                className="bg-white text-black py-[10px] md:py-[15px] px-[16px] rounded-[10px] text-[12px] border-b md:text-[16px] border-gray-200"
+                                className="bg-white text-black py-[10px] md:py-[20px] px-[16px] rounded-[10px] text-[12px] border-b md:text-[16px] border-gray-200"
                                 type="tel"
                                 value={phone}
                                 onChange={handlePhoneChange}
@@ -242,7 +242,7 @@ const CargoForm: React.FC = () => {
                             />
                         </div>
 
-                        <button className="flex justify-center items-center bg-[#344E74] hover:bg-[#506fa1] active:bg-white border-1 border-[#344E74] active:text-[#344E74] text-white md:font-bold text-[14px] md:text-[24px] xl:text-[36px] h-[37px] md:h-[64px] xl:h-[84px] col-span-2 md:col-span-4 rounded-[20px] transition-colors mt-[18px]">Заказать</button>
+                        <button onClick={handleSubmit} className="flex justify-center items-center bg-[#344E74] hover:bg-[#506fa1] active:bg-white border-1 border-[#344E74] active:text-[#344E74] text-white md:font-bold text-[14px] md:text-[24px] xl:text-[36px] h-[37px] md:h-[64px] xl:h-[84px] col-span-2 md:col-span-4 rounded-[10px] transition-colors mt-[18px]">Заказать</button>
                     </div>
                 </form>
             </div>
