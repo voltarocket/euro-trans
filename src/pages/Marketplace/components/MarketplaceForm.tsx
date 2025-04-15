@@ -85,12 +85,33 @@ const MarketplaceForm: React.FC = () => {
         return formatted;
     };
 
+    const countDigitsBeforePosition = (value: string, position: number): number => {
+        let count = 0;
+        for (let i = 0; i < position; i++) {
+            if (/\d/.test(value[i])) count++;
+        }
+        return count;
+    };
+
+    const findCursorPosition = (formattedValue: string, digitCount: number): number => {
+        let countedDigits = 0;
+        for (let i = 0; i < formattedValue.length; i++) {
+            if (/\d/.test(formattedValue[i])) {
+                countedDigits++;
+                if (countedDigits === digitCount) {
+                    return i + 1;
+                }
+            }
+        }
+        return formattedValue.length;
+    };
+
     const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const input = e.target;
         const selectionStart = input.selectionStart || 0;
         const value = input.value;
 
-        const digitCountBeforeCursor = value.slice(0, selectionStart).replace(/\D/g, '').length;
+        const digitCountBeforeCursor = countDigitsBeforePosition(value, selectionStart);
 
         const cleanValue = value.replace(/\D/g, '');
         const digits = cleanValue.startsWith('7') ? cleanValue.substring(1) : cleanValue;
@@ -100,19 +121,27 @@ const MarketplaceForm: React.FC = () => {
 
         setTimeout(() => {
             if (phoneRef.current) {
-                let newCursorPosition = 4;
-                let countedDigits = 0;
-                for (let i = 0; i < formattedValue.length; i++) {
-                    if (/\d/.test(formattedValue[i])) {
-                        countedDigits++;
-                        if (countedDigits === digitCountBeforeCursor + 1) {
-                            newCursorPosition = i + 1;
-                            break;
-                        }
-                    }
-                }
+                const newCursorPosition = findCursorPosition(formattedValue, digitCountBeforeCursor);
                 phoneRef.current.selectionStart = newCursorPosition;
                 phoneRef.current.selectionEnd = newCursorPosition;
+            }
+        }, 0);
+    };
+
+    const handlePhoneKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+        if (!/\d|Backspace|Delete|ArrowLeft|ArrowRight|Tab/.test(e.key)) {
+            e.preventDefault();
+        }
+    };
+
+    const handlePhoneFocus = () => {
+        if (phone === '') {
+            setPhone('+7 ');
+        }
+        setTimeout(() => {
+            if (phoneRef.current) {
+                phoneRef.current.selectionStart = 4;
+                phoneRef.current.selectionEnd = 4;
             }
         }, 0);
     };
@@ -186,7 +215,7 @@ const MarketplaceForm: React.FC = () => {
                                     <path d="M7 10L12 15L17 10H7Z" fill="#07162C"/>
                                 </svg>
                             </div>
-                            <div className={`absolute top-full left-0 right-0 z-10 bg-white text-black overflow-hidden transition-all min-w-full shadow-lg ${isDestinationOpen ? 'max-h-[300px] rounded-b-[10px] duration-200 delay-100' : 'max-h-0 duration-200'}`}>
+                            <div className={`absolute top-full md:top-21.5 left-0 right-0 z-10 bg-white text-black overflow-hidden transition-all min-w-full shadow-lg ${isDestinationOpen ? 'max-h-[300px] rounded-b-[10px] duration-200 delay-100' : 'max-h-0 duration-200'}`}>
                                 <div className="overflow-y-auto max-h-[300px]">
                                     {cities.map((city) => (
                                         <div
@@ -221,7 +250,7 @@ const MarketplaceForm: React.FC = () => {
                                     <path d="M7 10L12 15L17 10H7Z" fill="#07162C"/>
                                 </svg>
                             </div>
-                            <div className={`absolute top-full left-0 right-0 z-10 bg-white text-black overflow-hidden transition-all min-w-full shadow-lg ${isPalletOpen ? 'max-h-[300px] rounded-b-[10px] duration-200 delay-100' : 'max-h-0 duration-200'}`}>
+                            <div className={`absolute top-full md:top-21.5 left-0 right-0 z-10 bg-white text-black overflow-hidden transition-all min-w-full shadow-lg ${isPalletOpen ? 'max-h-[300px] rounded-b-[10px] duration-200 delay-100' : 'max-h-0 duration-200'}`}>
                                 <div className="overflow-y-auto max-h-[300px]">
                                     {availablePallets.map((num) => (
                                         <div
@@ -260,16 +289,8 @@ const MarketplaceForm: React.FC = () => {
                                 type="tel"
                                 value={phone}
                                 onChange={handlePhoneChange}
-                                onKeyDown={(e) => !/\d|Backspace|Delete|ArrowLeft|ArrowRight|Tab/.test(e.key) && e.preventDefault()}
-                                onFocus={() => {
-                                    if (phone === '') setPhone('+7 ');
-                                    setTimeout(() => {
-                                        if (phoneRef.current) {
-                                            phoneRef.current.selectionStart = 4;
-                                            phoneRef.current.selectionEnd = 4;
-                                        }
-                                    }, 0);
-                                }}
+                                onKeyDown={handlePhoneKeyDown}
+                                onFocus={handlePhoneFocus}
                                 placeholder="+7 (XXX) XXX-XX-XX"
                                 required
                             />

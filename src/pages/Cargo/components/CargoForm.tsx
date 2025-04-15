@@ -1,174 +1,145 @@
-// import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
+import { collection, doc, getDoc, addDoc } from 'firebase/firestore';
+import { db } from '../../../shared/api/firebase/config';
+
+interface CityData {
+    name: string;
+  }
+
 
 const CargoForm: React.FC = () => {
-    // const [destination, setDestination] = useState<string>('Москва');
-    // const [palletCount, setPalletCount] = useState<number>(1);
-    // const [totalPrice, setTotalPrice] = useState<number>(8000);
-    // const [phone, setPhone] = useState<string>('+7 ');
-    // const [name, setName] = useState<string>('');
-    // const [isDestinationOpen, setIsDestinationOpen] = useState(false);
-    // const [isPalletOpen, setIsPalletOpen] = useState(false);
-    // const phoneRef = useRef<HTMLInputElement>(null);
-    // const destinationRef = useRef<HTMLDivElement>(null);
-    // const palletRef = useRef<HTMLDivElement>(null);
+    const [destination, setDestination] = useState<string>('');
+    const [phone, setPhone] = useState<string>('');
+    const [name, setName] = useState<string>('');
+    const [isDestinationOpen, setIsDestinationOpen] = useState(false);
+    const [cities, setCities] = useState<CityData[]>([]);
+    const [loading, setLoading] = useState(true);
+    
+    const phoneRef = useRef<HTMLInputElement>(null);
+    const destinationRef = useRef<HTMLDivElement>(null);
 
-    // // Закрытие dropdown при клике вне его области
-    // useEffect(() => {
-    //     const handleClickOutside = (event: MouseEvent) => {
-    //         if (destinationRef.current && !destinationRef.current.contains(event.target as Node)) {
-    //             setIsDestinationOpen(false);
-    //         }
-    //         if (palletRef.current && !palletRef.current.contains(event.target as Node)) {
-    //             setIsPalletOpen(false);
-    //         }
-    //     };
+    useEffect(() => {
+        const loadCities = async () => {
+            try {
+                const citiesDoc = await getDoc(doc(collection(db, 'cities'), 'cities'));
+                if (citiesDoc.exists()) {
+                    const data = citiesDoc.data().list as CityData[];
+                    setCities(data);
+                    if (data.length > 0) {
+                        const initialCity = data[0];
+                        setDestination(initialCity.name);
+                    }
+                }
+            } catch (error) {
+                console.error('Error loading cities:', error);
+                alert('Failed to load cities data');
+            } finally {
+                setLoading(false);
+            }
+        };
+        loadCities();
+    }, []);
 
-    //     document.addEventListener('mousedown', handleClickOutside);
-    //     return () => {
-    //         document.removeEventListener('mousedown', handleClickOutside);
-    //     };
-    // }, []);
+    const formatPhoneNumber = (digits: string): string => {
+        let formatted = '+7 ';
+        if (digits.length > 0) formatted += `(${digits.substring(0, 3)}`;
+        if (digits.length > 3) formatted += `) ${digits.substring(3, 6)}`;
+        if (digits.length > 6) formatted += `-${digits.substring(6, 8)}`;
+        if (digits.length > 8) formatted += `-${digits.substring(8, 10)}`;
+        return formatted;
+    };
 
-    // const calculatePrice = (city: string, count: number) => {
-    //     const basePrices: Record<string, number> = {
-    //         'Москва': 8000,
-    //         'Казань': 14000,
-    //         'Санкт-Петербург': 18000,
-    //         'Екатеринбург': 26000,
-    //         'Краснодар': 30000,
-    //         'Алексин': 10400,
-    //         'Ростов на Дону': 30000,
-    //         'Воронеж': 20000,
-    //         'Волгоград': 26800,
-    //         'Нижний Новгород': 1400,
-    //         'Рязань': 10400,
-    //         'Тверь': 13200,
-    //         'Невиномысск': 32800,
-    //         'Адыгейск': 30000,
-    //         'Котовск': 20000,
-    //         'Владимир': 7200,
-    //         'Ярославль': 7200,
-    //     };
-    //     const pricePerPallet = 1000;
-    //     const basePrice = basePrices[city] || 8000;
-    //     const total = basePrice + (Math.max(0, count - 1) * pricePerPallet);
-    //     setTotalPrice(total);
-    // };
+    const countDigitsBeforePosition = (value: string, position: number): number => {
+        let count = 0;
+        for (let i = 0; i < position; i++) {
+            if (/\d/.test(value[i])) count++;
+        }
+        return count;
+    };
 
-    // const formatPhoneNumber = (digits: string): string => {
-    //     let formatted = '+7 ';
-    //     if (digits.length > 0) formatted += `(${digits.substring(0, 3)}`;
-    //     if (digits.length > 3) formatted += `) ${digits.substring(3, 6)}`;
-    //     if (digits.length > 6) formatted += `-${digits.substring(6, 8)}`;
-    //     if (digits.length > 8) formatted += `-${digits.substring(8, 10)}`;
-    //     return formatted;
-    // };
+    const findCursorPosition = (formattedValue: string, digitCount: number): number => {
+        let countedDigits = 0;
+        for (let i = 0; i < formattedValue.length; i++) {
+            if (/\d/.test(formattedValue[i])) {
+                countedDigits++;
+                if (countedDigits === digitCount) {
+                    return i + 1;
+                }
+            }
+        }
+        return formattedValue.length;
+    };
 
-    // const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    //     const input = e.target;
-    //     const selectionStart = input.selectionStart || 0;
-    //     const value = input.value;
+    const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const input = e.target;
+        const selectionStart = input.selectionStart || 0;
+        const value = input.value;
 
-    //     const digitCountBeforeCursor = countDigitsBeforePosition(value, selectionStart);
+        const digitCountBeforeCursor = countDigitsBeforePosition(value, selectionStart);
 
-    //     const cleanValue = value.replace(/\D/g, '');
-    //     const digits = cleanValue.startsWith('7') ? cleanValue.substring(1) : cleanValue;
+        const cleanValue = value.replace(/\D/g, '');
+        const digits = cleanValue.startsWith('7') ? cleanValue.substring(1) : cleanValue;
 
-    //     const formattedValue = formatPhoneNumber(digits.substring(0, 10));
-    //     setPhone(formattedValue);
+        const formattedValue = formatPhoneNumber(digits.substring(0, 10));
+        setPhone(formattedValue);
 
-    //     setTimeout(() => {
-    //         if (phoneRef.current) {
-    //             const newCursorPosition = findCursorPosition(formattedValue, digitCountBeforeCursor);
-    //             phoneRef.current.selectionStart = newCursorPosition;
-    //             phoneRef.current.selectionEnd = newCursorPosition;
-    //         }
-    //     }, 0);
-    // };
+        setTimeout(() => {
+            if (phoneRef.current) {
+                const newCursorPosition = findCursorPosition(formattedValue, digitCountBeforeCursor);
+                phoneRef.current.selectionStart = newCursorPosition;
+                phoneRef.current.selectionEnd = newCursorPosition;
+            }
+        }, 0);
+    };
 
-    // const countDigitsBeforePosition = (value: string, position: number): number => {
-    //     let count = 0;
-    //     for (let i = 0; i < position; i++) {
-    //         if (/\d/.test(value[i])) count++;
-    //     }
-    //     return count;
-    // };
+    const handlePhoneKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+        if (!/\d|Backspace|Delete|ArrowLeft|ArrowRight|Tab/.test(e.key)) {
+            e.preventDefault();
+        }
+    };
 
-    // const findCursorPosition = (formattedValue: string, digitCount: number): number => {
-    //     let countedDigits = 0;
-    //     for (let i = 0; i < formattedValue.length; i++) {
-    //         if (/\d/.test(formattedValue[i])) {
-    //             countedDigits++;
-    //             if (countedDigits === digitCount) {
-    //                 return i + 1;
-    //             }
-    //         }
-    //     }
-    //     return formattedValue.length;
-    // };
+    const handlePhoneFocus = () => {
+        if (phone === '') {
+            setPhone('+7 ');
+        }
+        setTimeout(() => {
+            if (phoneRef.current) {
+                phoneRef.current.selectionStart = 4;
+                phoneRef.current.selectionEnd = 4;
+            }
+        }, 0);
+    };
 
-    // const handlePhoneKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    //     if (!/\d|Backspace|Delete|ArrowLeft|ArrowRight|Tab/.test(e.key)) {
-    //         e.preventDefault();
-    //     }
-    // };
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        if (!destination || !name || phone.replace(/\D/g, '').length < 11) {
+            alert('Please fill all required fields correctly');
+            return;
+        }
 
-    // const handlePhoneFocus = () => {
-    //     if (phone === '') {
-    //         setPhone('+7 ');
-    //     }
-    //     setTimeout(() => {
-    //         if (phoneRef.current) {
-    //             phoneRef.current.selectionStart = 4;
-    //             phoneRef.current.selectionEnd = 4;
-    //         }
-    //     }, 0);
-    // };
+        try {
+            await addDoc(collection(db, 'orders'), {
+                destination,
+                name,
+                phone: phone.replace(/\D/g, ''),
+                timestamp: new Date()
+            });
+            alert('Order created successfully!');
+            setName('');
+            setPhone('+7 ');
+        } catch (error) {
+            console.error('Error submitting order:', error);
+            alert('Failed to create order');
+        }
+    };
 
-    // const handleDestinationSelect = (selectedCity: string) => {
-    //     setDestination(selectedCity);
-    //     calculatePrice(selectedCity, palletCount);
-    //     setIsDestinationOpen(false);
-    // };
-
-    // const handlePalletCountSelect = (selectedCount: number) => {
-    //     setPalletCount(selectedCount);
-    //     calculatePrice(destination, selectedCount);
-    //     setIsPalletOpen(false);
-    // };
-
-    // const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    //     setName(e.target.value);
-    // };
-
-    // const handleSubmit = async (e: React.FormEvent) => {
-    //     e.preventDefault();
-        
-    //     try {
-    //       const response = await fetch('/api/send-order', {
-    //         method: 'POST',
-    //         headers: { 'Content-Type': 'application/json' },
-    //         body: JSON.stringify({
-    //           destination,
-    //           palletCount,
-    //           name,
-    //           phone,
-    //           totalPrice,
-    //         }),
-    //       });
-      
-    //       if (!response.ok) throw new Error('Ошибка сервера');
-    //       alert('Заказ отправлен!');
-    //     } catch (error) {
-    //       alert('Ошибка: ' + error.message);
-    //     }
-    // };
-
-    // const cities = [
-    //     'Москва', 'Казань', 'Санкт-Петербург', 'Екатеринбург', 'Краснодар',
-    //     'Алексин', 'Ростов на Дону', 'Воронеж', 'Волгоград', 'Нижний Новгород',
-    //     'Рязань', 'Тверь', 'Невиномысск', 'Адыгейск', 'Котовск', 'Владимир', 'Ярославль'
-    // ];
+    if (loading) {
+        return (
+            <div className="flex justify-center items-center h-screen bg-[#07162C]">
+                <div className="text-white text-2xl">Loading...</div>
+            </div>
+        );
+    }
 
     return (
         <div className="pt-[32px] lg:pt-[64px] pb-[74px] lg:pb-[143px] bg-[#07162C] px-[20px] lg:px-[60px] -mt-[20px] -mb-[20px]">
@@ -190,13 +161,40 @@ const CargoForm: React.FC = () => {
                                 *Забор груза по г.Иваново - <strong>бесплатно</strong>
                             </p>
                         </div>
-                        <div className="flex flex-col col-span-2">
+
+                        <div className="flex flex-col col-span-2 relative" ref={destinationRef}>
                             <label className="text-[12px] md:text-[16px] mb-[8px]">Куда</label>
-                            <input
-                                className="bg-white text-black py-[10px] md:py-[20px] px-[16px] rounded-[10px] md:rounded-[20px] text-[12px] md:text-[16px] border-b border-gray-200"
-                                type="text"
-                            />
+                            <div className={`bg-white text-black py-[8px] md:py-[15px] px-[16px] text-[12px] md:text-[16px] border-b border-gray-200 w-full cursor-pointer flex justify-between items-center transition-[border-radius] ${isDestinationOpen ? 'duration-100' : 'duration-200 delay-200'} ${isDestinationOpen ? 'rounded-t-[10px] rounded-b-none' : 'rounded-[10px]'}`}
+                                onClick={() => setIsDestinationOpen(!isDestinationOpen)}>
+                                <span>{destination || 'Select city'}</span>
+                                <svg 
+                                    width="24" 
+                                    height="24" 
+                                    viewBox="0 0 24 24" 
+                                    fill="none" 
+                                    className={`transform transition-transform duration-200 ${isDestinationOpen ? 'rotate-180' : ''}`}
+                                >
+                                    <path d="M7 10L12 15L17 10H7Z" fill="#07162C"/>
+                                </svg>
+                            </div>
+                            <div className={`absolute top-full md:top-21.5 left-0 right-0 z-10 bg-white text-black overflow-hidden transition-all min-w-full shadow-lg ${isDestinationOpen ? 'max-h-[300px] rounded-b-[10px] duration-200 delay-100' : 'max-h-0 duration-200'}`}>
+                                <div className="overflow-y-auto max-h-[300px]">
+                                    {cities.map((city) => (
+                                        <div
+                                            key={city.name}
+                                            className={`py-[10px] md:py-[15px] px-[16px] text-[12px] md:text-[16px] cursor-pointer hover:bg-gray-100 transition-colors duration-150 ${destination === city.name ? 'bg-gray-100 font-medium' : ''}`}
+                                            onClick={() => {
+                                                setDestination(city.name);
+                                                setIsDestinationOpen(false);
+                                            }}
+                                        >
+                                            {city.name}
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
                         </div>
+
                         <div className="flex flex-col col-span-2">
                             <label className="text-[12px] md:text-[16px] mb-[8px]">Вид груза</label>
                             <input
@@ -204,6 +202,7 @@ const CargoForm: React.FC = () => {
                                 type="text"
                             />
                         </div>
+
                         <div className="flex flex-col col span-1">
                             <label className="text-[12px] md:text-[16px] mb-[8px]">Вес,кг</label>
                             <input
@@ -211,6 +210,7 @@ const CargoForm: React.FC = () => {
                                 type="text"
                             />
                         </div>
+
                         <div className="flex flex-col col span-1">
                             <label className="text-[12px] md:text-[16px] mb-[8px]">Объем, куб.м</label>
                             <input
@@ -218,6 +218,7 @@ const CargoForm: React.FC = () => {
                                 type="text"
                             />
                         </div>
+
                         <div className="flex flex-col col-span-2">
                             <label className="text-[12px] md:text-[16px] mb-[8px]">Имя</label>
                             <input
@@ -225,13 +226,22 @@ const CargoForm: React.FC = () => {
                                 type="text"
                             />
                         </div>
+                      
                         <div className="flex flex-col col-span-2">
                             <label className="text-[12px] md:text-[16px] mb-[8px]">Телефон</label>
                             <input
-                                className="bg-white text-black py-[10px] md:py-[20px] px-[16px] rounded-[10px] md:rounded-[20px] text-[12px] border-b md:text-[16px] border-gray-200"
-                                type="text"
+                                ref={phoneRef}
+                                className="bg-white text-black py-[10px] md:py-[15px] px-[16px] rounded-[10px] text-[12px] border-b md:text-[16px] border-gray-200"
+                                type="tel"
+                                value={phone}
+                                onChange={handlePhoneChange}
+                                onKeyDown={handlePhoneKeyDown}
+                                onFocus={handlePhoneFocus}
+                                placeholder="+7 (XXX) XXX-XX-XX"
+                                required
                             />
                         </div>
+
                         <button className="flex justify-center items-center bg-[#344E74] hover:bg-[#506fa1] active:bg-white border-1 border-[#344E74] active:text-[#344E74] text-white md:font-bold text-[14px] md:text-[24px] xl:text-[36px] h-[37px] md:h-[64px] xl:h-[84px] col-span-2 md:col-span-4 rounded-[20px] transition-colors mt-[18px]">Заказать</button>
                     </div>
                 </form>
