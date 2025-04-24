@@ -1,7 +1,5 @@
 @import "tailwindcss";
 @tailwind utilities;
-@import url('https://fonts.googleapis.com/css2?family=Kumar+One&display=swap');
-
 @layer base {
   .font-kumar {
     font-family: "Kumar One", system-ui, sans-serif;
@@ -27,9 +25,10 @@ section {
   display: flex;
   flex-direction: column;
 
-  /* color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424; */
+  color-scheme: light dark;
+
+  --favicon-light: url(../../../public/images/light.png);
+  --favicon-dark: url(../../../public/images/dark.svg);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;

@@ -2,6 +2,7 @@ import { lazy, useEffect } from "react";
 import { HashRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import Header from "../widgets/Header";
 import Footer from "../widgets/Footer";
+import { useSystemFavicon } from "../shared/lib/hooks/useSystemFavicon";
 
 const ScrollToAnchor = () => {
   const location = useLocation();
@@ -32,6 +33,8 @@ const MarketPlacePage = lazy(() => import("../pages/Marketplace"));
 const CargoPage = lazy(() => import("../pages/Cargo"));
 
 const App: React.FC = () => {
+  useSystemFavicon()
+  
   return (
     <Router>
       <ScrollToAnchor />

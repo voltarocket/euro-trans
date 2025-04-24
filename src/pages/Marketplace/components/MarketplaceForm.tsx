@@ -1,6 +1,9 @@
 import { useState, useRef, useEffect } from 'react';
-import { collection, doc, getDoc, addDoc } from 'firebase/firestore';
+import { collection, doc, getDoc } from 'firebase/firestore';
+import emailjs from 'emailjs-com';
 import { db } from '../../../shared/api/firebase/config';
+import { EMAIL_CONFIG } from '../../../shared/config/email';
+import Modal from '../../../widgets/Modal';
 
 interface CityPrices {
   [key: number]: number;
@@ -22,6 +25,8 @@ const MarketplaceForm: React.FC = () => {
     const [cities, setCities] = useState<CityData[]>([]);
     const [availablePallets, setAvailablePallets] = useState<number[]>([]);
     const [loading, setLoading] = useState(true);
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false);
     
     const phoneRef = useRef<HTMLInputElement>(null);
     const destinationRef = useRef<HTMLDivElement>(null);
@@ -43,7 +48,6 @@ const MarketplaceForm: React.FC = () => {
                 }
             } catch (error) {
                 console.error('Error loading cities:', error);
-                alert('Failed to load cities data');
             } finally {
                 setLoading(false);
             }
@@ -149,25 +153,37 @@ const MarketplaceForm: React.FC = () => {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         if (!destination || !name || phone.replace(/\D/g, '').length < 11) {
-            alert('Please fill all required fields correctly');
             return;
         }
 
         try {
-            await addDoc(collection(db, 'orders'), {
+            setIsSubmitting(true);
+            
+            const emailParams = {
+                to_email: EMAIL_CONFIG.RECEIVER_EMAIL,
                 destination,
-                palletCount,
-                name,
-                phone: phone.replace(/\D/g, ''),
-                totalPrice,
-                timestamp: new Date()
-            });
-            alert('Order created successfully!');
+                pallet_count: palletCount,
+                client_name: name,
+                client_phone: phone,
+                total_price: totalPrice.toLocaleString() + ' руб.',
+                timestamp: new Date().toLocaleString('ru-RU')
+            };
+
+            await emailjs.send(
+                EMAIL_CONFIG.SERVICE_ID,
+                EMAIL_CONFIG.TEMPLATE_ID_MARKETPLACE,
+                emailParams,
+                EMAIL_CONFIG.USER_ID
+            );
+
+            setIsModalOpen(true);
+
             setName('');
-            setPhone('+7 ');
+            setPhone('');
         } catch (error) {
             console.error('Error submitting order:', error);
-            alert('Failed to create order');
+        } finally {
+            setIsSubmitting(false);
         }
     };
 
@@ -305,12 +321,19 @@ const MarketplaceForm: React.FC = () => {
 
                         <button 
                             type="submit"
-                            className="flex justify-center items-center bg-[#344E74] hover:bg-[#506fa1] active:bg-white border-1 border-[#344E74] active:text-[#344E74] text-white md:font-bold text-[14px] md:text-[20px] xl:text-[36px] h-[37px] md:h-[54px] xl:h-[84px] col-span-2 md:col-span-5 rounded-[10px] lg:rounded-[20px] transition-colors mt-[18px]"
+                            disabled={isSubmitting}
+                            className="flex justify-center items-center bg-[#344E74] hover:bg-[#506fa1] active:bg-white border-1 border-[#344E74] active:text-[#344E74] text-white md:font-bold text-[14px] md:text-[20px] xl:text-[36px] h-[37px] md:h-[54px] xl:h-[84px] col-span-2 md:col-span-5 rounded-[10px] lg:rounded-[20px] transition-colors mt-[18px] relative"
                         >
-                            Заказать
+                            {isSubmitting ? (
+                                <div className="h-6 w-6 border-4 border-t-transparent border-white rounded-full animate-spin"></div>
+                            ) : 'Заказать'}
                         </button>
                     </div>
                 </form>
+                <Modal 
+                    isOpen={isModalOpen}
+                    onClose={() => setIsModalOpen(false)}
+                />
             </div>
         </div>
     );
