@@ -24,7 +24,6 @@ const MarketplaceForm: React.FC = () => {
     const [isPalletOpen, setIsPalletOpen] = useState(false);
     const [cities, setCities] = useState<CityData[]>([]);
     const [availablePallets, setAvailablePallets] = useState<number[]>([]);
-    const [loading, setLoading] = useState(true);
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
     
@@ -48,8 +47,6 @@ const MarketplaceForm: React.FC = () => {
                 }
             } catch (error) {
                 console.error('Error loading cities:', error);
-            } finally {
-                setLoading(false);
             }
         };
         loadCities();
@@ -152,7 +149,7 @@ const MarketplaceForm: React.FC = () => {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        if (!destination || !name || phone.replace(/\D/g, '').length < 11) {
+        if (!destination || !name || phone.replace(/\D/g, '').length < 11 || isSubmitting) {
             return;
         }
 
@@ -187,14 +184,6 @@ const MarketplaceForm: React.FC = () => {
         }
     };
 
-    if (loading) {
-        return (
-            <div className="flex justify-center items-center h-screen bg-[#07162C]">
-                <div className="text-white text-2xl">Loading...</div>
-            </div>
-        );
-    }
-
     return (
         <div className="pt-[42px] lg:pt-[64px] pb-[74px] lg:pb-[143px] bg-[#07162C] px-[20px] lg:px-[60px] -mt-[20px] -mb-[20px]">
             <div className="flex flex-col justify-center items-center text-white">
@@ -218,8 +207,14 @@ const MarketplaceForm: React.FC = () => {
 
                         <div className="flex flex-col col-span-2 relative" ref={destinationRef}>
                             <label className="text-[12px] md:text-[16px] mb-[8px]">Куда</label>
-                            <div className={`bg-white text-black py-[8px] md:py-[15px] px-[16px] text-[12px] md:text-[16px] border-b border-gray-200 w-full cursor-pointer flex justify-between items-center transition-[border-radius] ${isDestinationOpen ? 'duration-100' : 'duration-200 delay-200'} ${isDestinationOpen ? 'rounded-t-[10px] rounded-b-none' : 'rounded-[10px]'}`}
-                                onClick={() => setIsDestinationOpen(!isDestinationOpen)}>
+                            <div 
+                                className={`bg-white text-black py-[8px] md:py-[15px] px-[16px] text-[12px] md:text-[16px] border-b border-gray-200 w-full cursor-pointer flex justify-between items-center transition-[border-radius] ${
+                                    isDestinationOpen ? 'duration-100' : 'duration-100 delay-150'
+                                } ${
+                                    isDestinationOpen ? 'rounded-t-[10px] rounded-b-none' : 'rounded-[10px]'
+                                } ${isSubmitting ? 'cursor-not-allowed' : ''}`}
+                                onClick={() => !isSubmitting && setIsDestinationOpen(!isDestinationOpen)}
+                            >
                                 <span>{destination || 'Select city'}</span>
                                 <svg 
                                     width="24" 
@@ -231,7 +226,7 @@ const MarketplaceForm: React.FC = () => {
                                     <path d="M7 10L12 15L17 10H7Z" fill="#07162C"/>
                                 </svg>
                             </div>
-                            <div className={`absolute top-full md:top-21.5 left-0 right-0 z-10 bg-white text-black overflow-hidden transition-all min-w-full shadow-lg ${isDestinationOpen ? 'max-h-[300px] rounded-b-[10px] duration-200 delay-100' : 'max-h-0 duration-200'}`}>
+                            <div className={`absolute top-full md:top-21.5 left-0 right-0 z-10 bg-white text-black overflow-hidden transition-all min-w-full shadow-lg ${isDestinationOpen ? 'max-h-[300px] rounded-b-[10px] duration-100 delay-100' : 'max-h-0 duration-200'}`}>
                                 <div className="overflow-y-auto max-h-[300px]">
                                     {cities.map((city) => (
                                         <div
@@ -253,8 +248,14 @@ const MarketplaceForm: React.FC = () => {
 
                         <div className="flex flex-col col-span-2 md:col-span-1 relative" ref={palletRef}>
                             <label className="text-[12px] md:text-[16px] mb-[8px]">Кол-во паллет</label>
-                            <div className={`bg-white text-black py-[8px] md:py-[15px] px-[16px] text-[12px] md:text-[16px] border-b border-gray-200 w-full cursor-pointer flex justify-between items-center transition-[border-radius] ${isPalletOpen ? 'duration-100' : 'duration-200 delay-200'} ${isPalletOpen ? 'rounded-t-[10px] rounded-b-none' : 'rounded-[10px]'}`}
-                                onClick={() => setIsPalletOpen(!isPalletOpen)}>
+                            <div 
+                                className={`bg-white text-black py-[8px] md:py-[15px] px-[16px] text-[12px] md:text-[16px] border-b border-gray-200 w-full cursor-pointer flex justify-between items-center transition-[border-radius] ${
+                                    isPalletOpen ? 'duration-100' : 'duration-100 delay-150'
+                                } ${
+                                    isPalletOpen ? 'rounded-t-[10px] rounded-b-none' : 'rounded-[10px]'
+                                } ${isSubmitting ? 'cursor-not-allowed' : ''}`}
+                                onClick={() => !isSubmitting && setIsPalletOpen(!isPalletOpen)}
+                            >
                                 <span>{palletCount}</span>
                                 <svg 
                                     width="24" 
@@ -266,7 +267,7 @@ const MarketplaceForm: React.FC = () => {
                                     <path d="M7 10L12 15L17 10H7Z" fill="#07162C"/>
                                 </svg>
                             </div>
-                            <div className={`absolute top-full md:top-21.5 left-0 right-0 z-10 bg-white text-black overflow-hidden transition-all min-w-full shadow-lg ${isPalletOpen ? 'max-h-[300px] rounded-b-[10px] duration-200 delay-100' : 'max-h-0 duration-200'}`}>
+                            <div className={`absolute top-full md:top-21.5 left-0 right-0 z-10 bg-white text-black overflow-hidden transition-all min-w-full shadow-lg ${isPalletOpen ? 'max-h-[300px] rounded-b-[10px] duration-100 delay-100' : 'max-h-0 duration-200'}`}>
                                 <div className="overflow-y-auto max-h-[300px]">
                                     {availablePallets.map((num) => (
                                         <div
@@ -294,6 +295,7 @@ const MarketplaceForm: React.FC = () => {
                                 onChange={(e) => setName(e.target.value)}
                                 placeholder="Введите имя"
                                 required
+                                disabled={isSubmitting}
                             />
                         </div>
 
@@ -309,6 +311,7 @@ const MarketplaceForm: React.FC = () => {
                                 onFocus={handlePhoneFocus}
                                 placeholder="+7 (XXX) XXX-XX-XX"
                                 required
+                                disabled={isSubmitting}
                             />
                         </div>
 
