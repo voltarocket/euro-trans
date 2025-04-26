@@ -15,12 +15,12 @@ const StagesCard: React.FC<StagesProps> = ({ image, description, isLast = false 
                     src={image}
                     alt="Этап"
                 />
-                <div className="text-[10px] flex-1">
+                <div className="text-[12px] flex-1">
                     {description}
                 </div>
             </div>
             <img
-                className="hidden md:block md:w-[50px] xl:w-[80px] mx-auto sm:mx-0"
+                className="hidden md:block md:w-[50px] xl:w-[70px] mx-auto sm:mx-0"
                 src={image}
                 alt="Этап"
             />
@@ -33,7 +33,7 @@ const StagesCard: React.FC<StagesProps> = ({ image, description, isLast = false 
                     />
                 </div>
             )}
-            <div className="hidden sm:block col-span-1 sm:col-span-2 text-[10px] md:text-[15px] xl:text-[24px] 2xl:text-[32px] self-start text-left justify-self-start">
+            <div className="hidden sm:block col-span-1 sm:col-span-2 text-[10px] md:text-[15px] xl:text-[20px] xl:pt-[24px] 2xl:text-[32px] self-start text-left justify-self-start">
                 {description}
             </div>
         </div>

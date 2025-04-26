@@ -6,7 +6,7 @@ interface CardProps {
 
 const AboutCard: React.FC<CardProps> = ({ title, description, imageURL }) => {
     return (
-        <div className="bg-[#344E74] hover:scale-110 transition-all py-[12px] xl:py-[32px] px-[32px] rounded-[20px] flex flex-col items-center justify-center gap-[3.71px] xl:gap-[16px] w-full sm:w-auto">
+        <div className="bg-[#344E74] hover:scale-105 transition-all py-[12px] xl:py-[32px] px-[32px] xl:px-[21px] rounded-[20px] flex flex-col items-center justify-center gap-[3.71px] xl:gap-[16px] w-full sm:w-auto">
             <img
                 className="w-[20px] h-[20px] md:w-[30px] md:h-[30px] xl:w-[50px] xl:h-[50px]" 
                 src={imageURL}

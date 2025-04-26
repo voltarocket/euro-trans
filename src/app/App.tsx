@@ -1,51 +1,43 @@
-import { lazy, useEffect } from "react";
-import { HashRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import { Suspense, lazy } from "react";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "../widgets/Header";
 import Footer from "../widgets/Footer";
 import { useSystemFavicon } from "../shared/lib/hooks/useSystemFavicon";
 
-const ScrollToAnchor = () => {
-  const location = useLocation();
-
-  useEffect(() => {
-    if (location.hash) {
-      setTimeout(() => {
-        const element = document.querySelector(location.hash);
-        if (element) {
-          const headerHeight = document.querySelector('header')?.clientHeight || 80;
-          const elementPosition = element.getBoundingClientRect().top;
-          const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
-
-          window.scrollTo({
-            top: offsetPosition,
-            behavior: 'smooth'
-          });
-        }
-      }, 0);
-    }
-  }, [location]);
-
-  return null;
-};
 
 const HomePage = lazy(() => import("../pages/Home"));
 const MarketPlacePage = lazy(() => import("../pages/Marketplace"));
 const CargoPage = lazy(() => import("../pages/Cargo"));
 
+const BlurredLoader = () => (
+  <div className="fixed inset-0 z-50 flex items-center justify-center">
+    <div className="absolute inset-0 backdrop-blur-lg bg-gradient-to-br from-[#E9EBEE] to-[#07162C]" />
+    <div className="relative flex flex-col items-center gap-4 text-white/90">
+      <div className="h-16 w-16 animate-spin rounded-full border-4 border-l-transparent border-t-transparent border-white" />
+      <p className="font-semibold tracking-wide animate-pulse">
+        Подгружаем контент...
+      </p>
+    </div>
+  </div>
+);
+
 const App: React.FC = () => {
   useSystemFavicon()
   
   return (
-    <Router>
-      <ScrollToAnchor />
-      <Header/>
-      <Routes>
-        <Route path="/" element={<HomePage/>}/>
-        <Route path="/cargo" element={<CargoPage/>}/>
-        <Route path="/marketplace" element={<MarketPlacePage/>}/>
-      </Routes>
-      <Footer />
-    </Router>
+    <Suspense fallback={<BlurredLoader />}>
+        <Router>
+        <Header/>
+        <Routes>
+          <Route path="/" element={<HomePage/>}/>
+          <Route path="/cargo" element={<CargoPage/>}/>
+          <Route path="/marketplace" element={<MarketPlacePage/>}/>
+        </Routes>
+         <footer id="contacts">
+           <Footer />
+         </footer>
+      </Router>
+    </Suspense>
   )
 }
 export default App;

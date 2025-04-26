@@ -6,10 +6,14 @@ import CargoHome from "./components/CargoHome";
 const CargoPage: React.FC = () => {
     return (
             <>
-                <CargoHome />
+                <section id="home">
+                 <CargoHome />
+                </section>
                 <CargoText />
                 <CargoCards />
-                <CargoForm />
+                <section id="form">
+                    <CargoForm />
+                </section>
             </>
         )
 }

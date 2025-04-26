@@ -20,7 +20,7 @@ const VehicleCard: React.FC<VehicleCardProps> = ({
     return (
         <div className="bg-[#07162C] text-white flex flex-col items-center p-2 xl:p-6 rounded-[20px] w-full max-w-[320px] lg:min-w-[300px] xl:min-w-[380px] h-[331px] md:h-[384px] lg:h-[384px] xl:h-[540px]">
             <div className="h-[60px] flex items-center justify-center w-full">
-                <p className="text-[20px] md:text-[24px] xl:text-[28px] font-extrabold text-center line-clamp-2">
+                <p className="text-[20px] md:text-[20px] xl:text-[28px] font-extrabold text-center line-clamp-2">
                     {title}
                 </p>
             </div>

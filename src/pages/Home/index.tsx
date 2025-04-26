@@ -1,23 +1,29 @@
-import { useRef } from "react";
+import React from "react";
 import AboutUs from "./components/AboutUs";
 import Home from "./components/Home";
 import Stages from "./components/Stages";
 import Vehicles from "./components/Vehicles";
 
 const HomePage: React.FC = () => {
-    const homeRef = useRef<HTMLDivElement>(null);
-    const aboutRef = useRef<HTMLDivElement>(null);
-    // const vehiclesRef = useRef<HTMLDivElement>(null);
-    // const stagesRef = useRef<HTMLDivElement>(null);
+  return (
+    <>
+      <section id="home">
+        <Home />
+      </section>
 
-    return (
-        <>
-            <Home ref={homeRef} id="#home" />
-            <AboutUs ref={aboutRef} id="#about" /> 
-            <Vehicles />
-            <Stages />
-        </>
-    );
+      <section id="about">
+        <AboutUs />
+      </section>
+
+      <section id="vehicles">
+        <Vehicles />
+      </section>
+
+      <section id="stages">
+        <Stages />
+      </section>
+    </>
+  );
 };
 
 export default HomePage;

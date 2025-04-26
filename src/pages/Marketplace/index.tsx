@@ -6,10 +6,14 @@ import MarketplaceItem from "./components/MarketplaceItem";
 const MarketPlacePage: React.FC = () => {
     return (
             <>
-                <MarketplaceHome />
+                <section id="home">
+                    <MarketplaceHome />
+                </section>
                 <MarketplaceFbo />
                 <MarketplaceItem />
-                <MarketplaceForm />
+                <section id="form">
+                    <MarketplaceForm />
+                </section>
             </>
         )
 }

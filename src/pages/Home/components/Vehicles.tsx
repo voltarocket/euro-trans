@@ -93,6 +93,10 @@ const Vehicles: React.FC = () => {
 
     const settings: Settings = {
         dots: true,
+        customPaging: () => (
+            <div className="w-[10px] h-[10px] mt-[16px] md:w-[14px] md:h-[14px] rounded-full bg-gray-400" />
+        ),
+        dotsClass: "slick-dots custom-dots !bottom-[-30px] flex justify-center gap-2",
         infinite: true,
         speed: 500,
         slidesToShow: 3,
@@ -139,9 +143,9 @@ const Vehicles: React.FC = () => {
     };
 
     return (
-        <div className="items-center py-6 lg:pt-[32px] mb-[24px] relative rounded-t-[10px] bg-[#E9EBEE] -mt-[10px]">
-            <div className="flex justify-center pb-6 lg:pb-[32px]">
-                <p className="text-[20px] md:text-[32px] lg:text-[36px] xl:text-[48px] font-extrabold text-center">
+        <div className="items-center py-6 lg:pt-[32px] xl:pt-[48px] mb-[32px] lg:mb-[40px] relative rounded-t-[10px] bg-[#E9EBEE] -mt-[10px] xl-max-w-[1280px] xl:mx-auto">
+            <div className="flex justify-center pb-6 lg:pb-[32px] xl:pb-[48px]">
+                <p className="text-[20px] md:text-[32px] lg:text-[36px] font-extrabold text-center">
                     Транспорт под любые цели
                 </p>
             </div>
