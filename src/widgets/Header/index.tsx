@@ -97,7 +97,7 @@ const Header: React.FC = () => {
                         </HashLink>
                     </nav>
                     
-                    <HashLink smooth to="/#home"><img className="h-[38px] w-[40px] md:h-[56px] md:w-[60px] xl:h-[66px] xl:w-[70px]" src={logo} alt="Логотип" /></HashLink>
+                    <HashLink smooth to="/#home"><img className="h-[38px] w-[40px] md:h-[46px] md:w-[50px] xl:h-[66px] xl:w-[70px]" src={logo} alt="Логотип" /></HashLink>
 
                     <nav className="hidden lg:flex gap-[32px] xl:gap-[48px] text-[14px] xl:text-[20px] items-center">
                         <HashLink smooth to="/#stages" onClick={closeMenu} className="hover:underline underline-offset-8 decoration-[#07162C] decoration-4">
@@ -116,7 +116,7 @@ const Header: React.FC = () => {
                             </button>
                             <div
                                 ref={servicesMenuRef}
-                                className={`absolute mt-2 w-68 xl:w-90 bg-white rounded-lg shadow-lg z-20 ${isServicesOpen ? 'block' : 'hidden'}`}
+                                className={`absolute -left-26 xl:-left-32 mt-2 w-68 xl:w-90 bg-white rounded-lg shadow-lg z-20 ${isServicesOpen ? 'block' : 'hidden'}`}
                             >
                                 <NavHashLink 
                                     smooth to="/cargo#home" 

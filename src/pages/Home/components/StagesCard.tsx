@@ -3,13 +3,13 @@ import arrow from "../../../shared/assets/icons/Arrow.svg";
 interface StagesProps {
     image: string;
     description: string;
-    isLast?: boolean; // Добавляем новый пропс
+    isLast?: boolean;
 }
 
 const StagesCard: React.FC<StagesProps> = ({ image, description, isLast = false }) => {
     return (
-        <div className="sm:flex sm:items-center md:grid md:grid-cols-2 md:grid-rows-2 w-full min-w-[258px] md:min-w-[174px]">
-            <div className="flex items-center sm:hidden">
+        <div className="sm:flex sm:items-center md:grid md:grid-cols-2 md:grid-rows-2 lg:gap-y-[16px] w-full min-w-[258px] md:min-w-[174px]">
+            <div className="flex items-center md:hidden">
                 <img
                     className="mr-4 w-[40px]"
                     src={image}
@@ -20,12 +20,12 @@ const StagesCard: React.FC<StagesProps> = ({ image, description, isLast = false 
                 </div>
             </div>
             <img
-                className="hidden md:block md:w-[50px] xl:w-[70px] mx-auto sm:mx-0"
+                className="hidden md:block md:w-[50px] xl:w-[60px] mx-auto sm:mx-0"
                 src={image}
                 alt="Этап"
             />
             {!isLast && (
-                <div className="hidden sm:flex items-center justify-center">
+                <div className="hidden md:flex items-center justify-center">
                     <img
                         className="w-[100px] xl:w-[156px]"
                         src={arrow}
@@ -33,7 +33,7 @@ const StagesCard: React.FC<StagesProps> = ({ image, description, isLast = false 
                     />
                 </div>
             )}
-            <div className="hidden sm:block col-span-1 sm:col-span-2 text-[10px] md:text-[15px] xl:text-[20px] xl:pt-[24px] 2xl:text-[32px] self-start text-left justify-self-start">
+            <div className="hidden md:block col-span-1 sm:col-span-2 text-[10px] md:text-[15px] xl:text-[18px] self-start text-left justify-self-start">
                 {description}
             </div>
         </div>

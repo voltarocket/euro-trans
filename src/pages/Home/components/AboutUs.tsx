@@ -68,14 +68,13 @@ const AboutUs = forwardRef<HTMLDivElement, AboutUsProps>(({ id }, ref) => (
   <div
     id={id || "about"}
     ref={ref}
-    className="pt-[58px] bg-[#07162C] pb-[42px] lg:pb-[52px] 
-               px-[20px] md:px-[40px] lg:px-[60px] xl:px-0 
+    className="pt-[42px] bg-[#07162C] pb-[42px] lg:pb-[52px] 
+               px-[20px] md:px-[40px] lg:px-[60px] xl:px-[71px] 
                -mt-[10px] scroll-mt-[80px]"
   >
     <div className="xl:max-w-[1280px] xl:mx-auto flex flex-col justify-center items-center text-white">
-      {/* Заголовок и описание */}
-      <section className="pb-[32px] xl:pb-[80px] w-full">
-        <h2 className="text-[20px] md:text-[32px] lg:text-[36px] font-extrabold text-center pb-[16px] md:pb-[32px] xl:pb-[24px]">
+      <section className="pb-[32px] w-full">
+        <h2 className="text-[20px] md:text-[32px] lg:text-[36px] font-extrabold text-center pb-[16px] md:pb-[24px] xl:pb-[24px]">
           О нас
         </h2>
         <div className="text-[12px] md:text-[16px] xl:text-[20px] text-justify">
@@ -94,7 +93,6 @@ const AboutUs = forwardRef<HTMLDivElement, AboutUsProps>(({ id }, ref) => (
         </div>
       </section>
 
-      {/* Счетчики */}
       <section className="flex flex-row justify-center gap-8 lg:gap-[169px] xl:gap-[80px] pb-10 xl:pb-[72px] w-full xl:max-w-[1200px]">
         {counters.map(({ target, suffix, text }, idx) => (
           <div key={idx} className="flex flex-col items-center w-full">
@@ -109,9 +107,8 @@ const AboutUs = forwardRef<HTMLDivElement, AboutUsProps>(({ id }, ref) => (
         ))}
       </section>
 
-      {/* Карточки */}
       <section className="w-full xl:max-w-[1280px]">
-        <div className="flex flex-col gap-[24px] xl:gap-[48px] items-center bg-[#E9EBEE] rounded-[20px] py-[48px] px-[26px] text-white">
+        <div className="flex flex-col gap-[24px] xl:gap-[32px] items-center bg-[#E9EBEE] rounded-[20px] py-[24px] xl:py-[32px] px-[26px] text-white">
           <h3 className="text-[20px] md:text-[32px] lg:text-[36px] text-[#07162C] font-extrabold text-center">
             Почему стоит работать с нами
           </h3>

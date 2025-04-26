@@ -11,9 +11,9 @@ const CargoPage = lazy(() => import("../pages/Cargo"));
 
 const BlurredLoader = () => (
   <div className="fixed inset-0 z-50 flex items-center justify-center">
-    <div className="absolute inset-0 backdrop-blur-lg bg-gradient-to-br from-[#E9EBEE] to-[#07162C]" />
-    <div className="relative flex flex-col items-center gap-4 text-white/90">
-      <div className="h-16 w-16 animate-spin rounded-full border-4 border-l-transparent border-t-transparent border-white" />
+    <div className="absolute inset-0 backdrop-blur-lg bg-[#E9EBEE]" />
+    <div className="relative flex flex-col items-center gap-4 text-[#07162C]">
+      <div className="h-16 w-16 animate-spin rounded-full border-4 border-l-transparent border-t-transparent border-[#07162C]" />
       <p className="font-semibold tracking-wide animate-pulse">
         Подгружаем контент...
       </p>
