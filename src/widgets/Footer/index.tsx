@@ -4,7 +4,7 @@ const Footer: React.FC = () => {
     return (
         <div className="pt-6 lg:pt-[32px] bg-[#E9EBEE] rounded-t-[20px] 
                        border-t-[3px] border-[#07162C] text-lg 
-                       pb-[100px]
+                       pb-[132px]
                        px-[20px] md:px-[40px] lg:px-[60px] xl:px-0">
             <div className="xl:max-w-[1280px] xl:mx-auto">
                 <div className="flex flex-col items-center
@@ -27,8 +27,8 @@ const Footer: React.FC = () => {
                             <strong>Тел: </strong> 
                             <a className="pointer decoration-[#07162C] decoration-3 
                                        hover:underline underline-offset-3" 
-                               href="">
-                                +7 920 370-74-90
+                               href="tel:+79203707490">
+                                +7 (920) 370-74-90
                             </a>, Максим
                         </p>
                         <p className="text-[10px] md:text-[15px] xl:text-[20px]">

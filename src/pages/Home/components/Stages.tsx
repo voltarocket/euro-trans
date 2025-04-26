@@ -45,7 +45,7 @@ const Stages: React.FC = () => {
                     Этапы работы
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-3 
-                              gap-[16px] md:gap-x-[64px] md:gap-y-0 lg:gap-x-[72px] 
+                              gap-[16px] md:gap-x-[64px] md:gap-y-0 lg:gap-y-[16px] 2xl:gap-y-[32px] lg:gap-x-[72px] 
                               xl:px-[80px]">
                     {stagesData.map((stage, index) => (
                         <StagesCard 

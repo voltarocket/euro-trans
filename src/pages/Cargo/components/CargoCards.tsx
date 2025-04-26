@@ -22,9 +22,9 @@ const cardData = [
 
 const CargoCards: React.FC = () => {
     return (
-        <div className="flex flex-col md:flex-row  gap-[24px] md:gap-[21px] justify-center items-center md:items-start bg-[#E9EBEE] rounded-[20px] py-[32px] lg:py-[64px] px-[20px] md:px-[41px] lg:px-[60px] -mt-[20px] relative">
+        <div className="flex flex-col md:flex-row  gap-[24px] md:gap-[21px] justify-center items-center md:items-start bg-[#E9EBEE] rounded-[20px] py-[32px] lg:py-[48px] px-[20px] md:px-[41px] lg:px-[60px] -mt-[20px] relative">
                     {cardData.map((card, index) => (
-                        <div key={index} className="bg-[#344E74] text-white hover:scale-110 transition-all transform-gpu py-[20px] xl:py-[32px] px-[32px] md:px-[9px] rounded-[20px] flex flex-col items-center justify-center gap-[3.71px] xl:gap-[16px] w-full max-w-[364px] overflow-hidden h-fit">
+                        <div key={index} className="bg-[#344E74] text-white hover:scale-105 transition-all transform-gpu py-[20px] xl:py-[32px] px-[32px] md:px-[9px] rounded-[20px] flex flex-col items-center justify-center gap-[3.71px] xl:gap-[16px] w-full max-w-[364px] overflow-hidden h-fit">
                          <img
                              className="w-[20px] h-[20px] md:w-[30px] md:h-[30px] lg:w-[40px] lg:h-[40px] xl:w-[50px] xl:h-[50px]" 
                              src={card.imageURL}

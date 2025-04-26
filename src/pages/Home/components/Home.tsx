@@ -41,11 +41,11 @@ const Home: React.FC = () => {
 
   return (
     <div className="flex flex-col md:flex-row rounded-b-[10px] overflow-hidden leading-none">
-      <div className="flex flex-col pt-[88px] md:pt-[120px] lg:pt-[132px] xl:pt-[164px] 2xl:pt-[206px] px-[20px] md:pl-[40px] md:pr-0 lg:pl-[60px] xl:pl-[70px] pb-0 md:pb-[32px] lg:pb-[64px] bg-[#E9EBEE] w-full md:w-1/2">
-        <p className="text-start text-[22px] sm:text-[30px] md:text-[32px] lg:text-[36px] xl:text-[36px] 2xl:text-[48px] 3xl:text-[72px] font-extrabold mb-[12px] xl:mb-[16px] xl:max-w-[600px]">
+      <div className="flex flex-col pt-[88px] md:pt-[120px] lg:pt-[132px] xl:pt-[164px] px-[20px] md:pl-[40px] md:pr-0 lg:pl-[60px] xl:pl-[70px] pb-0 md:pb-[32px] lg:pb-[64px] bg-[#E9EBEE] w-full md:w-1/2">
+        <p className="text-start text-[22px] sm:text-[30px] md:text-[32px] lg:text-[36px] xl:text-[36px] 2xl:text-[48px] font-extrabold mb-[12px] xl:mb-[16px] 2xl:mb-[24px] xl:max-w-[600px]">
           Надежные логистические решения для вашего бизнеса
         </p>
-        <p className="text-[12px] md:text-[14px] lg:text-[18px] xl:text-[16px] mb-[24px] lg:mb-[32px] xl:mb-[48px] w-full lg:max-w-[442px] xl:max-w-fit">
+        <p className="text-[12px] md:text-[14px] lg:text-[18px] xl:text-[16px] 2xl:text-[24px] mb-[24px] lg:mb-[32px] xl:mb-[48px] w-full lg:max-w-[442px] xl:max-w-fit">
           Доставка грузов на склады маркетплейсов и организация логистических перевозок по РФ
         </p>
         <div className="flex flex-col gap-[8px] xl:gap-[12px] w-full lg:max-w-[370px] xl:max-w-[464px] md:pb-[8px]">
@@ -71,7 +71,7 @@ const Home: React.FC = () => {
         </p>
       </div>
 
-      <div className={`w-full md:w-1/2 overflow-hidden ${widthClass} md:h-[514px] lg:h-[567px] xl:h-[628px] 2xl:h-[678px]`}>
+      <div className={`w-full overflow-hidden ${widthClass} md:h-[514px] lg:h-[590px] xl:h-[628px] 2xl:h-[694px]`}>
         <img src={image} alt="Грузовик" className="w-full h-full object-cover" />
       </div>
     </div>

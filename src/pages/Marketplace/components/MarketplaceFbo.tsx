@@ -5,33 +5,33 @@ import three from "../../../shared/assets/images/Three-w.png"
 const MarketplaceFbo:React.FC = () => {
     return (
         <div className="pt-[42px] bg-[#07162C] pb-[52px] lg:pb-[80px] px-[20px] md:px-[40px] lg:px-[60px] -mt-[10px]">
-        <div className="flex flex-col justify-center items-center text-white">
-            <p className="text-[20px] md:text-[32px] lg:text-[36px] xl:text-[48px] font-extrabold text-center pb-[16px] md:pb-[32px]">Почему отправка по FBO на склады других регионов выгодна?</p>
+        <div className="flex flex-col xl:max-w-[1280px] xl:mx-auto justify-center items-center text-white">
+            <p className="text-[20px] md:text-[32px] lg:text-[36px] font-extrabold text-center pb-[24px] md:pb-[32px]">Почему отправка по FBO на склады других регионов выгодна?</p>
             <div className="flex flex-col md:flex-row gap-[32px]">
                 <div className="flex flex-col gap-[32px] md:justify-center">
                     <div className="flex gap-[24px]">
                         <img className="h-[46px] w-[40px]" src={one} alt="" />
                             <div className="">
-                                <p className="font-bold text-[14px] mb-[8px]">Поисковая выдача</p>
-                                <p className="text-[12px]">Маркетплейс выдвигает в первые ряды те товары, которые находятся ближе. При равных условия, в поисковой выдаче, приоритет будет у продавцов, которые доставят быстрее</p>
+                                <p className="font-bold text-[18px] xl:text-[24px] mb-[8px]">Поисковая выдача</p>
+                                <p className="text-[12px] xl:text-[16px]">Маркетплейс выдвигает в первые ряды те товары, которые находятся ближе. При равных условия, в поисковой выдаче, приоритет будет у продавцов, которые доставят быстрее</p>
                             </div>
                     </div>
                     <div className="flex gap-[24px]">
                         <img className="h-[46px] w-[40px]" src={two} alt="" />
                             <div className="">
-                                <p className="font-bold text-[14px] mb-[8px]">Выгода</p>
-                                <p className="text-[12px]">Мы предлагаем лучшие условия по логистике, в пересчете на единицу товара, в сравнении с логистикой маркетплейсов</p>
+                                <p className="font-bold text-[18px] xl:text-[24px] mb-[8px]">Выгода</p>
+                                <p className="text-[12px] xl:text-[16px]">Мы предлагаем лучшие условия по логистике, в пересчете на единицу товара, в сравнении с логистикой маркетплейсов</p>
                             </div>
                     </div>
                     <div className="flex gap-[24px]">
                         <img className="h-[46px] w-[40px]" src={three} alt="" />
                             <div className="">
-                                <p className="font-bold text-[14px] mb-[8px]">Охват</p>
-                                <p className="text-[12px]">Возможность расширить свою аудиторию за пределы домашнего региона</p>
+                                <p className="font-bold text-[18px] xl:text-[24px] mb-[8px]">Охват</p>
+                                <p className="text-[12px] xl:text-[16px]">Возможность расширить свою аудиторию за пределы домашнего региона</p>
                             </div>
                     </div>
                 </div>
-                <table className="border-2 border-white text-[12px]">
+                <table className="border-2 border-white text-[12px] xl:text-[16px]">
                     <thead className="bg-white text-[#07162C]">
                         <tr>
                             <th className="border-2 border-white p-2">Склады</th>

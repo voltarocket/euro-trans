@@ -185,9 +185,9 @@ const MarketplaceForm: React.FC = () => {
     };
 
     return (
-        <div className="pt-[42px] lg:pt-[64px] pb-[74px] lg:pb-[143px] bg-[#07162C] px-[20px] lg:px-[60px] -mt-[20px] -mb-[20px]">
-            <div className="flex flex-col justify-center items-center text-white">
-                <p className="text-[20px] md:text-[32px] lg:text-[36px] xl:text-[48px] font-extrabold text-center pb-[16px] md:pb-[32px] lg:pb-[64px]">
+        <div className="pt-[52px] lg:pt-[64px] pb-[74px] bg-[#07162C] px-[20px] lg:px-[60px] -mt-[20px] -mb-[20px]">
+            <div className="flex flex-col xl:max-w-[1280px] xl:mx-auto justify-center items-center text-white">
+                <p className="text-[20px] md:text-[32px] lg:text-[36px] font-extrabold text-center pb-[16px] md:pb-[32px] lg:pb-[24px]">
                     Рассчет и оформление перевозки
                 </p>
                 <form className="w-full" onSubmit={handleSubmit}>
@@ -325,7 +325,7 @@ const MarketplaceForm: React.FC = () => {
                         <button 
                             type="submit"
                             disabled={isSubmitting}
-                            className="flex justify-center items-center bg-[#344E74] hover:bg-[#506fa1] active:bg-white border-1 border-[#344E74] active:text-[#344E74] text-white md:font-bold text-[14px] md:text-[20px] xl:text-[36px] h-[37px] md:h-[54px] xl:h-[84px] col-span-2 md:col-span-5 rounded-[10px] lg:rounded-[20px] transition-colors mt-[18px] relative"
+                            className="flex justify-center items-center bg-[#344E74] hover:bg-[#506fa1] active:bg-white border-1 border-[#344E74] active:text-[#344E74] text-white md:font-bold text-[18px] md:text-[20px] xl:text-[24px] h-[42px] md:h-[54px] xl:h-[55px] col-span-2 md:col-span-5 rounded-[10px] transition-colors relative"
                         >
                             {isSubmitting ? (
                                 <div className="h-6 w-6 border-4 border-t-transparent border-white rounded-full animate-spin"></div>

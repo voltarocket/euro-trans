@@ -64,7 +64,7 @@ const Header: React.FC = () => {
     }, [isServicesOpen]);
 
     return (
-        <header className="py-[8px] lg:py-[11px] bg-[#E9EBEECC]/80 backdrop-blur-sm rounded-b-[20px] z-10 fixed w-full">
+        <header className="py-[8px] lg:py-[11px] bg-[#E9EBEECC]/80 backdrop-blur-sm rounded-b-[20px] z-[100] fixed w-full">
             <div className="container mx-auto px-[20px] md:px-[40px] lg:px-[172px] xl:px-[174px] 2xl:px-[301.58px]">
                 <div className="flex justify-between items-center">
                     <div className="lg:hidden flex items-center">
@@ -169,19 +169,13 @@ const Header: React.FC = () => {
                             <div className={`${isServicesOpen ? 'block' : 'hidden'} flex flex-col gap-[8px] items-center mt-2`}
                             >
                                 <NavHashLink 
-                                    smooth to="/cargo"   
-                                    scroll={() => {
-                                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                                     }}
+                                    smooth to="/cargo#home"   
                                     onClick={closeMenu} 
                                     className="bg-[#344E74] text-white py-[8px] px-[30px] rounded-[10px] text-[14px]">
                                     Логистические услуги по РФ
                                 </NavHashLink>
                                 <NavHashLink 
-                                    smooth to="/marketplace" 
-                                    scroll={() => {
-                                        window.scrollTo({ top: 0, behavior: 'smooth' });
-                                        }}
+                                    smooth to="/marketplace#home" 
                                     onClick={closeMenu} 
                                     className="bg-[#344E74] text-white py-[8px] px-[14px] rounded-[10px] text-[14px]">
                                     Доставка груза на маркетплейсы
