@@ -4,7 +4,7 @@ const Footer: React.FC = () => {
     return (
         <div className="pt-6 lg:pt-[32px] bg-[#E9EBEE] rounded-t-[20px] 
                        border-t-[3px] border-[#07162C] text-lg 
-                       pb-[132px]
+                       pb-[100px]
                        px-[20px] md:px-[40px] lg:px-[60px] xl:px-0">
             <div className="xl:max-w-[1280px] xl:mx-auto">
                 <div className="flex flex-col items-center

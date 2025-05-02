@@ -5,7 +5,7 @@ const ScrollToTopButton: React.FC = () => {
 
   const checkScroll = () => {
     const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
-    setIsVisible(scrollPosition > 300);
+    setIsVisible(scrollPosition > 500);
   };
 
   const scrollToTop = () => {
