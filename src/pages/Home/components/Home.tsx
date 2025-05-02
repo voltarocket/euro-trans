@@ -36,7 +36,7 @@ const Home: React.FC = () => {
     if (width < 1024) return { image: truckimagemd, widthClass: "md:w-[60%]" };
     if (width < 1280) return { image: truckimagelg, widthClass: "lg:w-[65%]" };
     if (width < 1536) return { image: truckimagexl, widthClass: "xl:w-[60%]" };
-    return { image: truckimage2xl, widthClass: "2xl:w-[50%]" };
+    return { image: truckimage2xl, widthClass: "2xl:w-[60%]" };
   }, [width]);
 
   return (
@@ -48,12 +48,12 @@ const Home: React.FC = () => {
                       2xl:pl-[calc((100%-1536px)/2+130px)]">
         <div className="xl:max-w-[1280px] 2xl:max-w-[1536px]">
           <p className="text-start text-[22px] sm:text-[30px] md:text-[32px] lg:text-[36px] 
-                      xl:text-[36px] 2xl:text-[48px] font-extrabold mb-[12px] xl:mb-[16px] 
-                      2xl:mb-[24px] xl:max-w-[600px]">
+                      xl:text-[36px] font-extrabold mb-[12px] xl:mb-[16px] 
+                       xl:max-w-[600px]">
             Надежные логистические решения для вашего бизнеса
           </p>
           <p className="text-[12px] md:text-[14px] lg:text-[18px] xl:text-[16px] 
-                      2xl:text-[24px] mb-[24px] lg:mb-[32px] xl:mb-[48px] 
+                       mb-[24px] lg:mb-[32px] xl:mb-[48px] 
                       w-full lg:max-w-[442px] xl:max-w-fit">
             Доставка грузов на склады маркетплейсов и организация логистических перевозок по РФ
           </p>
@@ -93,7 +93,7 @@ const Home: React.FC = () => {
       </div>
 
       <div className={`w-full overflow-hidden ${widthClass} 
-                      md:h-[514px] lg:h-[590px] xl:h-[628px] 2xl:h-[694px]`}>
+                      md:h-[514px] lg:h-[590px] xl:h-[628px] 2xl:h-[628px]`}>
         <img 
           src={image} 
           alt="Грузовик" 

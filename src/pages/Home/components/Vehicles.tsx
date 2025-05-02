@@ -107,19 +107,50 @@ const Vehicles: React.FC = () => {
         slidesToShow: 3,
         slidesToScroll: 1,
         centerMode: true,
-        centerPadding: "0",
+        centerPadding: '0',
         responsive: [
-            {
-                breakpoint: 640,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1,
-                    centerPadding: "20px",
-                    centerMode: true
+                {
+                    breakpoint: 1536,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 1,
+                        centerMode: true,
+                    }
+                },
+                {
+                    breakpoint: 1440,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 1,
+                        centerMode: true,
+                    }
+                },
+                {
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 1,
+                        centerMode: true,
+                    }
+                },
+                {
+                    breakpoint: 768,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 1,
+                        centerMode: true,
+                    }
+                },
+                {
+                    breakpoint: 640,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                        centerMode: true,
+                    }
                 }
-            }
-        ]
-    };
+            ]
+        };
 
     return (
         <div className="items-center py-6 lg:pt-[32px] xl:pt-[48px] mb-[42px] lg:mb-[56px] relative rounded-t-[10px] bg-[#E9EBEE] -mt-[10px] 
@@ -135,7 +166,7 @@ const Vehicles: React.FC = () => {
                 <div className="slider-container">
                     <Slider ref={sliderRef} {...settings}>
                         {vehicleData.map((vehicleCard, index) => (
-                            <div className="px-2 lg:px-[40px]" key={index}>
+                            <div className="px-2 lg:px-[40px] xl:px-2" key={index}>
                                 <VehicleCard {...vehicleCard} />
                             </div>
                         ))}

@@ -12,16 +12,13 @@ export const useSystemFavicon = () => {
       link.type = "image/png";
       link.href = `${isDark ? "/favicon-dark.png" : "/favicon-light.png"}?v=${Date.now()}`;
       document.head.appendChild(link);
-
-      console.log("Favicon updated to:", link.href);
     };
 
     const media = window.matchMedia("(prefers-color-scheme: dark)");
 
-    updateFavicon(media.matches); // установка при первом рендере
+    updateFavicon(media.matches); 
 
     const handler = (e: MediaQueryListEvent) => {
-      console.log("Theme changed:", e.matches ? "dark" : "light");
       updateFavicon(e.matches);
     };
 
