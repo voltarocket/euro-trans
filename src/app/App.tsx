@@ -2,6 +2,7 @@ import { Suspense, lazy } from "react";
 import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "../widgets/Header";
 import Footer from "../widgets/Footer";
+import { ScrollToTopButton } from "../shared/components/ScrollToTopButton";
 import { useSystemFavicon } from "../shared/lib/hooks/useSystemFavicon";
 
 
@@ -36,6 +37,7 @@ const App: React.FC = () => {
          <footer id="contacts">
            <Footer />
          </footer>
+         <ScrollToTopButton />
       </Router>
     </Suspense>
   )

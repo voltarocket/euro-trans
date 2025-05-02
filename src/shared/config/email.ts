@@ -3,5 +3,5 @@ export const EMAIL_CONFIG = {
     TEMPLATE_ID_MARKETPLACE: "template_jtgrhv3",
     TEMPLATE_ID_CARGO: "template_eezs6zx",
     USER_ID: "rRuy0bHSimoD-xEfj",
-    RECEIVER_EMAIL: "voltarocket@gmail.com"
+    RECEIVER_EMAIL: "taushev.vladimir@trans-eu.ru"
   };

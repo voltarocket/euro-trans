@@ -1,22 +1,23 @@
 import box from "../../../shared/assets/icons/Box.svg"
 import calendar from "../../../shared/assets/icons/Calendar.svg"
-import document from "../../../shared/assets/icons/Document.svg"
+import price from "../../../shared/assets/icons/Price.svg"
 
 const cardData = [
     {
-        title: 'Полный спектр услуг',
-        description: 'FTL, LTL, перевозки негабаритных и тяжеловесных объектов',
-        imageURL: box
+        title: "Лучшая цена на рынке",
+        description: "Предлагаем выгодные условия благодаря анализу рынка",
+        imageURL: price,
     },
     {
         title: 'Бесплатное изменение дня доставки',
         description: 'По электронному письму или звонку ведущему специалисту, до наступления дня ранее указанной доставки',
         imageURL: calendar
     },
+
     {
-        title: 'Организация пропусков',
-        description: 'Предоставляем данные водителя для пропуска заранее',
-        imageURL: document
+        title: 'Полный спектр услуг',
+        description: 'FTL, LTL, перевозки негабаритных и тяжеловесных объектов',
+        imageURL: box
     },
 ];
 

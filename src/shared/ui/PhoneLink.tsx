@@ -56,7 +56,7 @@ const PhoneLink = ({
       {!isMobile && showTooltip && (
         <div
           role="tooltip"
-          className="absolute top-1/2 left-[280px] -translate-y-1/2 mr-2
+          className="absolute top-1/2 left-[220px] lg:left-[280px] -translate-y-1/2 mr-2
                      bg-[#344E74] text-white px-3 py-1.5 rounded-lg
                      text-[12px] md:text-[16px] lg:text-[20px] xl:text-[24px]
                      animate-fade-in-out whitespace-nowrap"

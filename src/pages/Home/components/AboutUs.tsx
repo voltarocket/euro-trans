@@ -6,7 +6,7 @@ import price from "../../../shared/assets/icons/Price.svg";
 import calendar from "../../../shared/assets/icons/Calendar.svg";
 import timer from "../../../shared/assets/icons/Timer.svg";
 import checkbox from "../../../shared/assets/icons/CheckBox.svg";
-import document from "../../../shared/assets/icons/Document.svg";
+import box from "../../../shared/assets/icons/Box.svg";
 import truck from "../../../shared/assets/icons/Truck.svg";
 
 interface AboutUsProps {
@@ -35,9 +35,9 @@ const cardData = [
     imageURL: checkbox,
   },
   {
-    title: "Организация пропусков",
-    description: "Предоставляем данные водителя для пропуска заранее",
-    imageURL: document,
+    title: 'Полный спектр услуг',
+    description: 'FTL, LTL, перевозки негабаритных и тяжеловесных объектов',
+    imageURL: box
   },
   {
     title: "Гибкость доставки",

@@ -6,15 +6,24 @@
   }
 }
 
-html, body {
-  overscroll-behavior-y: contain;
-  height: 100%;
-  overflow-x: hidden;
-}
-
 html {
   scroll-behavior: smooth;
-} 
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+  font-family: Inter;
+  background-color: #E9EBEE;
+  color: #07162C;
+  overflow-x: hidden;
+}
 
 section {
   scroll-margin-top: 80px;
