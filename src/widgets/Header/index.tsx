@@ -116,19 +116,19 @@ const Header: React.FC = () => {
                             </button>
                             <div
                                 ref={servicesMenuRef}
-                                className={`absolute -left-26 xl:-left-32 mt-2 w-68 xl:w-90 bg-white rounded-lg shadow-lg z-20 ${isServicesOpen ? 'block' : 'hidden'}`}
+                                className={`absolute -left-30 xl:-left-37 mt-2 w-75 xl:w-100 bg-white rounded-lg shadow-lg z-20 ${isServicesOpen ? 'block' : 'hidden'}`}
                             >
                                 <NavHashLink 
                                     smooth to="/cargo#home" 
                                     onClick={closeMenu} 
                                     className="block px-4 pt-2 pb-1 text-center rounded-lg rounded-b-none hover:bg-gray-100">
-                                    Логистические услуги по РФ
+                                    Логистические услуги 
                                 </NavHashLink>
                                 <NavHashLink 
                                     smooth to="/marketplace#home" 
                                     onClick={closeMenu} 
                                     className="block px-4 pt-1 pb-2 text-center rounded-lg rounded-t-none hover:bg-gray-100">
-                                    Доставка груза на маркетплейсы
+                                    Доставка товара на маркетплейсы
                                 </NavHashLink>
                             </div>
                         </div>
@@ -172,13 +172,13 @@ const Header: React.FC = () => {
                                     smooth to="/cargo#home"   
                                     onClick={closeMenu} 
                                     className="bg-[#344E74] text-white py-[8px] px-[30px] rounded-[10px] text-[14px]">
-                                    Логистические услуги по РФ
+                                    Логистические услуги
                                 </NavHashLink>
                                 <NavHashLink 
                                     smooth to="/marketplace#home" 
                                     onClick={closeMenu} 
                                     className="bg-[#344E74] text-white py-[8px] px-[14px] rounded-[10px] text-[14px]">
-                                    Доставка груза на маркетплейсы
+                                    Доставка товара на маркетплейсы
                                 </NavHashLink>
                             </div>
                         </div>

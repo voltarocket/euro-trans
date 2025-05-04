@@ -55,7 +55,7 @@ const Home: React.FC = () => {
           <p className="text-[12px] md:text-[14px] lg:text-[18px] xl:text-[16px] 
                        mb-[24px] lg:mb-[32px] xl:mb-[48px] 
                       w-full lg:max-w-[442px] xl:max-w-fit">
-            Доставка грузов на склады маркетплейсов и организация логистических перевозок по РФ
+            Доставка товаров на сортировочные центры маркетплейсов и организация логистических перевозок
           </p>
           <div className="flex flex-col gap-[8px] xl:gap-[12px] w-full lg:max-w-[370px] 
                          xl:max-w-[464px] md:pb-[8px]">
@@ -69,7 +69,7 @@ const Home: React.FC = () => {
             >
               <span className="text-[12px] md:text-[16px] lg:text-[20px] xl:text-[24px] 
                               xl:font-bold">
-                Логистические услуги по РФ
+                Логистические услуги 
               </span>
             </NavHashLink>
             <NavHashLink
@@ -82,7 +82,7 @@ const Home: React.FC = () => {
             >
               <span className="text-[12px] md:text-[16px] lg:text-[20px] xl:text-[24px] 
                               xl:font-bold">
-                Доставка груза на маркетплейсы
+                Доставка товара на маркетплейсы
               </span>
             </NavHashLink>
           </div>

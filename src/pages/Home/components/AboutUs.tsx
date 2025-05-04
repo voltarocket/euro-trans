@@ -15,7 +15,7 @@ interface AboutUsProps {
 
 const cardData = [
   {
-    title: "Лучшая цена на рынке",
+    title: "Лучшие цены на рынке",
     description: "Предлагаем выгодные условия благодаря анализу рынка",
     imageURL: price,
   },
@@ -36,7 +36,7 @@ const cardData = [
   },
   {
     title: 'Полный спектр услуг',
-    description: 'FTL, LTL, перевозки негабаритных и тяжеловесных объектов',
+    description: 'FTL, LTL, перевозки негабаритных объектов',
     imageURL: box
   },
   {
@@ -60,7 +60,7 @@ const counters = [
   {
     target: 1000,
     suffix: "+",
-    text: "Успешных перевозок и довольных клиентов",
+    text: "Успешных перевозок",
   },
 ];
 

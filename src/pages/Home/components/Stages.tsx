@@ -4,7 +4,6 @@ import two from "../../../shared/assets/images/Two.png";
 import three from "../../../shared/assets/images/Three.png";
 import four from "../../../shared/assets/images/Four.png";
 import five from "../../../shared/assets/images/Five.png";
-import six from "../../../shared/assets/images/Six.png";
 
 const stagesData = [
     {
@@ -17,20 +16,16 @@ const stagesData = [
     },
     {
         image: three,
-        description: "Передайте груз и сопроводительные документы (при необходимости) водителю"
+        description: "После подачи машины в указанное вами время, передайте груз водителю вместе с документами"
     },
     {
         image: four,
-        description: "За сутки до доставки мы свяжемся с вами для подтверждения и предоставим данные для пропуска"
+        description: "За сутки до загрузки мы свяжемся с Вами для подтверждения заявки и предоставим данные для пропуска"
     },
     {
         image: five,
-        description: "В назначенную дату авизации мы сдадим груз на указанный склад Маркетплейса"
+        description: "В назначенную дату выгрузки мы сдадим Ваш товар на указанный склад Маркетплейса"
     },
-    {
-        image: six,
-        description: "Оплатите счет и обращайтесь к нам снова"
-    }
 ];
 
 const Stages: React.FC = () => {

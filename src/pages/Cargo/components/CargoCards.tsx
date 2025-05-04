@@ -4,7 +4,7 @@ import price from "../../../shared/assets/icons/Price.svg"
 
 const cardData = [
     {
-        title: "Лучшая цена на рынке",
+        title: "Лучшие цены на рынке",
         description: "Предлагаем выгодные условия благодаря анализу рынка",
         imageURL: price,
     },
@@ -16,7 +16,7 @@ const cardData = [
 
     {
         title: 'Полный спектр услуг',
-        description: 'FTL, LTL, перевозки негабаритных и тяжеловесных объектов',
+        description: 'FTL, LTL, перевозки негабаритных объектов',
         imageURL: box
     },
 ];

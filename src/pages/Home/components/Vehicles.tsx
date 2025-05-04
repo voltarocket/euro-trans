@@ -104,86 +104,83 @@ const Vehicles: React.FC = () => {
         dotsClass: "slick-dots custom-dots !bottom-[-30px] flex justify-center gap-2",
         infinite: true,
         speed: 500,
-        slidesToShow: 3,
+        slidesToShow: 5, 
         slidesToScroll: 1,
-        centerMode: true,
-        centerPadding: '0',
+        centerMode: false,
+        centerPadding: "0",
         responsive: [
-                {
-                    breakpoint: 1536,
-                    settings: {
-                        slidesToShow: 3,
-                        slidesToScroll: 1,
-                        centerMode: true,
-                    }
-                },
-                {
-                    breakpoint: 1440,
-                    settings: {
-                        slidesToShow: 3,
-                        slidesToScroll: 1,
-                        centerMode: true,
-                    }
-                },
-                {
-                    breakpoint: 1024,
-                    settings: {
-                        slidesToShow: 3,
-                        slidesToScroll: 1,
-                        centerMode: true,
-                    }
-                },
-                {
-                    breakpoint: 768,
-                    settings: {
-                        slidesToShow: 3,
-                        slidesToScroll: 1,
-                        centerMode: true,
-                    }
-                },
-                {
-                    breakpoint: 640,
-                    settings: {
-                        slidesToShow: 1,
-                        slidesToScroll: 1,
-                        centerMode: true,
-                    }
+            {
+                breakpoint: 1920,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 1,
+                    centerMode: false
                 }
-            ]
-        };
+            },
+            {
+                breakpoint: 1536,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 1,
+                    centerMode: false
+                }
+            },
+            {
+                breakpoint: 1440,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 1,
+                    centerMode: true,
+                    centerPadding: "40px"
+                }
+            },
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 1,
+                    centerMode: false
+                }
+            },
+            {
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1
+                }
+            },
+            {
+                breakpoint: 640,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            }
+        ]
+    };
 
     return (
-        <div className="items-center py-6 lg:pt-[32px] xl:pt-[48px] mb-[42px] lg:mb-[56px] relative rounded-t-[10px] bg-[#E9EBEE] -mt-[10px] 
-            px-[20px] md:px-[40px] lg:px-[60px] 
-            xl:px-[calc((100%-1280px)/2+71px)] 
-            2xl:px-[calc((100%-1536px)/2+130px)]">
-            <div className="xl:max-w-[1280px] 2xl:max-w-[1536px] mx-auto">
-                <div className="flex justify-center pb-6 lg:pb-[32px] xl:pb-[48px]">
-                    <p className="text-[20px] md:text-[32px] lg:text-[36px] font-extrabold text-center">
-                        Транспорт под любые цели
-                    </p>
-                </div>
-                <div className="slider-container">
-                    <Slider ref={sliderRef} {...settings}>
-                        {vehicleData.map((vehicleCard, index) => (
-                            <div className="px-2 lg:px-[40px] xl:px-2" key={index}>
-                                <VehicleCard {...vehicleCard} />
-                            </div>
-                        ))}
-                    </Slider>
-                    <div className="absolute top-[56%] transform -translate-y-1/2 w-full left-0">
-                        <div className="px-[20px] md:px-[40px] lg:px-[60px] 
-                                    2xl:px-[calc((100%-1536px)/2+30px)]">
-                            <div className="flex justify-between">
-                                <Button onClick={previous}>
-                                    <img className="h-6 lg:h-[30px]" src={left} alt="Left Arrow" />
-                                </Button>
-                                <Button onClick={next}>
-                                    <img className="h-6 lg:h-[30px]" src={right} alt="Right Arrow" />
-                                </Button>
-                            </div>
+        <div className="items-center py-6 lg:pt-[32px] xl:pt-[48px] mb-[42px] lg:mb-[56px] relative rounded-t-[10px] bg-[#E9EBEE] -mt-[10px] xl-max-w-[1280px] xl:mx-auto">
+            <div className="flex justify-center pb-6 lg:pb-[32px] xl:pb-[48px]">
+                <p className="text-[20px] md:text-[32px] lg:text-[36px] font-extrabold text-center">
+                    Транспорт под любые цели
+                </p>
+            </div>
+            <div className="slider-container">
+                <Slider ref={sliderRef} {...settings}>
+                    {vehicleData.map((vehicleCard, index) => (
+                        <div className="px-2 lg:px-[40px]" key={index}>
+                            <VehicleCard {...vehicleCard} />
                         </div>
-                    </div>
+                    ))}
+                </Slider>
+                <div className="absolute top-[56%] transform -translate-y-1/2 w-full flex justify-between px-4">
+                    <Button onClick={previous} className="left-0">
+                        <img className="h-6 lg:h-[30px]" src={left} alt="Left Arrow" />
+                    </Button>
+                    <Button onClick={next} className="right-0">
+                        <img className="h-6 lg:h-[30px]" src={right} alt="Right Arrow" />
+                    </Button>
                 </div>
             </div>
         </div>

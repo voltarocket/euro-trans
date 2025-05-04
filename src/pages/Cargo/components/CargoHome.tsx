@@ -42,12 +42,8 @@ const CargoHome: React.FC = () => {
                       2xl:pl-[calc((100%-1536px)/2+130px)]">
         <div className="xl:max-w-[1280px] 2xl:max-w-[1536px]">
           <p className="text-start text-[20px] sm:text-[30px] md:text-[32px] lg:text-[36px] 
-                      2xl:text-[48px] 3xl:text-[72px] font-extrabold mb-[8px] md:mb-[12px]">
-            Логистические перевозки по России 
-          </p>
-          <p className="text-[12px] md:text-[14px] lg:text-[16px] xl:text-[18px] 
-                      mb-[16px] md:mb-[32px] lg:mb-[24px] xl:mb-[32px] w-full">
-            Надежная доставка грузов из Иваново в любой регион страны
+                      2xl:text-[48px] 3xl:text-[72px] font-extrabold mb-[32px]">
+            Логистические перевозки 
           </p>
           
           <div className="flex flex-col gap-[16px] pb-[22px] xl:pb-[32px] pr-[20%]">

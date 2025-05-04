@@ -1,47 +1,20 @@
-import { useState, useRef, useEffect } from 'react';
-import { collection, doc, getDoc } from 'firebase/firestore';
+import { useState, useRef } from 'react';
 import emailjs from 'emailjs-com';
-import { db } from '../../../shared/api/firebase/config';
 import { EMAIL_CONFIG } from '../../../shared/config/email';
 import Modal from '../../../widgets/Modal';
 
-interface CityData {
-  name: string;
-}
-
 const CargoForm: React.FC = () => {
+  const [pickUp, setPickUp] = useState<string>('')
   const [destination, setDestination] = useState<string>('');
   const [phone, setPhone] = useState<string>('');
   const [name, setName] = useState<string>('');
   const [cargoType, setCargoType] = useState<string>('');
   const [weight, setWeight] = useState<string>('');
   const [volume, setVolume] = useState<string>('');
-  const [isDestinationOpen, setIsDestinationOpen] = useState(false);
-  const [cities, setCities] = useState<CityData[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   
   const phoneRef = useRef<HTMLInputElement>(null);
-  const destinationRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const loadCities = async () => {
-      try {
-        const citiesDoc = await getDoc(doc(collection(db, 'cities'), 'cities'));
-        if (citiesDoc.exists()) {
-          const data = citiesDoc.data().list as CityData[];
-          setCities(data);
-          if (data.length > 0) {
-            setDestination(data[0].name);
-          }
-        }
-      } catch (error) {
-        console.error('Error loading cities:', error);
-        alert('Ошибка загрузки данных городов');
-      } 
-    };
-    loadCities();
-  }, []);
 
   const generateOrderId = () => {
     const datePart = new Date()
@@ -121,7 +94,7 @@ const CargoForm: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!destination || !name || !cargoType || !weight || !volume || phone.replace(/\D/g, '').length < 11 || isSubmitting) {
+    if (!pickUp || !destination || !name || !cargoType || !weight || !volume || phone.replace(/\D/g, '').length < 11 || isSubmitting) {
       return;
     }
   
@@ -130,7 +103,8 @@ const CargoForm: React.FC = () => {
 
       const templateParams = {
         order_id: generateOrderId(),
-        destination,
+        pickUp: pickUp,
+        destination: destination,
         client_name: name,
         client_phone: phone,
         cargo_type: cargoType,
@@ -162,7 +136,8 @@ const CargoForm: React.FC = () => {
       setCargoType('');
       setWeight('');
       setVolume('');
-      setDestination(cities[0]?.name || '');
+      setDestination('');
+      setPickUp('');
   
     } catch (error) {
       console.error('Ошибка отправки данных:', error);
@@ -176,61 +151,35 @@ const CargoForm: React.FC = () => {
     <div className="pt-[52px] md:pt-[52px] lg:pt-[64px] pb-[74px] bg-[#07162C] px-[20px] lg:px-[60px] -mt-[20px] -mb-[20px]">
       <div className="flex flex-col xl:max-w-[1280px] xl:mx-auto justify-center items-center text-white">
         <p className="text-[20px] md:text-[32px] lg:text-[36px] font-extrabold text-center pb-[16px] md:pb-[24px] lg:pb-[32px] xl:pb-[24px]">
-          Оформление перевозки
+          Оформление заявки
         </p>
         <form className="w-full" onSubmit={handleSubmit}>
           <div className="grid grid-cols-2 md:grid-cols-4 grid-rows-[78px 58px 58px 58px 58px 58px 58px] gap-x-[10px] md:gap-x-[20px] gap-y-[14px] xl:gap-y-[24px]">
             <div className="flex flex-col col-span-2">
               <label className="text-[12px] md:text-[16px] mb-[8px]">Откуда</label>
               <input
+              value={pickUp}
+                onChange={(e) => setPickUp(e.target.value)}
                 className="bg-white text-black py-[10px] md:py-[15px] px-[16px] rounded-[10px] text-[12px] md:text-[16px] border-b border-gray-200"
                 type="text"
-                value="Иваново"
-                disabled
+                required
+                placeholder='Укажите город'
+                disabled={isSubmitting}
               />
-              <p className="text-[10px] md:text-[16px] mt-[8px]">
-                *Забор груза по г.Иваново - <strong>бесплатно</strong>
-              </p>
             </div>
 
-            <div className="flex flex-col col-span-2 relative" ref={destinationRef}>
-                            <label className="text-[12px] md:text-[16px] mb-[8px]">Куда</label>
-                            <div 
-                                className={`bg-white text-black py-[8px] md:py-[15px] px-[16px] text-[12px] md:text-[16px] border-b border-gray-200 w-full cursor-pointer flex justify-between items-center transition-[border-radius] ${
-                                    isDestinationOpen ? 'duration-100' : 'duration-100 delay-150'
-                                } ${
-                                    isDestinationOpen ? 'rounded-t-[10px] rounded-b-none' : 'rounded-[10px]'
-                                } ${isSubmitting ? 'cursor-not-allowed' : ''}`}
-                                onClick={() => !isSubmitting && setIsDestinationOpen(!isDestinationOpen)}
-                            >
-                                <span>{destination || 'Select city'}</span>
-                                <svg 
-                                    width="24" 
-                                    height="24" 
-                                    viewBox="0 0 24 24" 
-                                    fill="none" 
-                                    className={`transform transition-transform duration-200 ${isDestinationOpen ? 'rotate-180' : ''}`}
-                                >
-                                    <path d="M7 10L12 15L17 10H7Z" fill="#07162C"/>
-                                </svg>
-                            </div>
-                            <div className={`absolute top-full md:top-21.5 left-0 right-0 z-10 bg-white text-black overflow-hidden transition-all min-w-full shadow-lg ${isDestinationOpen ? 'max-h-[300px] rounded-b-[10px] duration-200 delay-100' : 'max-h-0 duration-200'}`}>
-                                <div className="overflow-y-auto max-h-[300px]">
-                                    {cities.map((city) => (
-                                        <div
-                                            key={city.name}
-                                            className={`py-[10px] md:py-[15px] px-[16px] text-[12px] md:text-[16px] cursor-pointer hover:bg-gray-100 transition-colors duration-150 ${destination === city.name ? 'bg-gray-100 font-medium' : ''}`}
-                                            onClick={() => {
-                                                setDestination(city.name);
-                                                setIsDestinationOpen(false);
-                                            }}
-                                        >
-                                            {city.name}
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                        </div>
+            <div className="flex flex-col col-span-2">
+              <label className="text-[12px] md:text-[16px] mb-[8px]">Куда</label>
+              <input
+                value={destination}
+                onChange={(e) => setDestination(e.target.value)}
+                className="bg-white text-black py-[10px] md:py-[15px] px-[16px] rounded-[10px] text-[12px] md:text-[16px] border-b border-gray-200"
+                type="text"
+                required
+                placeholder='Укажите город'
+                disabled={isSubmitting}
+              />
+            </div>
 
             <div className="flex flex-col col-span-2">
               <label className="text-[12px] md:text-[16px] mb-[8px]">Вид груза</label>
@@ -240,6 +189,7 @@ const CargoForm: React.FC = () => {
                 className="bg-white text-black py-[10px] md:py-[15px] px-[16px] rounded-[10px] text-[12px] md:text-[16px] border-b border-gray-200"
                 type="text"
                 required
+                placeholder='Укажите вид груза'
                 disabled={isSubmitting}
               />
             </div>
@@ -253,6 +203,7 @@ const CargoForm: React.FC = () => {
                 type="number"
                 min="1"
                 required
+                placeholder='Укажите вес груза'
                 disabled={isSubmitting}
               />
             </div>
@@ -267,6 +218,7 @@ const CargoForm: React.FC = () => {
                 step="0.1"
                 min="0.1"
                 required
+                placeholder='Укажите обьем груза'
                 disabled={isSubmitting}
               />
             </div>
@@ -279,6 +231,7 @@ const CargoForm: React.FC = () => {
                 className="bg-white text-black py-[10px] md:py-[15px] px-[16px] rounded-[10px] text-[12px] border-b md:text-[16px] border-gray-200"
                 type="text"
                 required
+                placeholder='Укажите имя'
                 disabled={isSubmitting}
               />
             </div>
