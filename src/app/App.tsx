@@ -4,6 +4,8 @@ import Header from "../widgets/Header";
 import Footer from "../widgets/Footer";
 import { ScrollToTopButton } from "../shared/components/ScrollToTopButton";
 import { useSystemFavicon } from "../shared/lib/hooks/useSystemFavicon";
+import { useYaMetrika } from "../shared/lib/hooks/useYaMetrika"; 
+import { useTrackPageViews } from "../shared/lib/hooks/useTrackPageViews";
 
 
 const HomePage = lazy(() => import("../pages/Home"));
@@ -22,12 +24,19 @@ const BlurredLoader = () => (
   </div>
 );
 
+const Trackers = () => {
+  useYaMetrika(101642479);
+  useTrackPageViews(101642479);
+  return null;
+};
+
 const App: React.FC = () => {
   useSystemFavicon()
   
   return (
     <Suspense fallback={<BlurredLoader />}>
         <Router>
+        <Trackers /> 
         <Header/>
         <Routes>
           <Route path="/" element={<HomePage/>}/>

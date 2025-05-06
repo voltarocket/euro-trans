@@ -27,8 +27,17 @@ const Footer: React.FC = () => {
                             <strong>Тел: </strong> 
                             <a className="pointer decoration-[#07162C] decoration-3 
                                        hover:underline underline-offset-3" 
-                               href="tel:+79203797490">
-                                +7 (920) 379-74-90
+                               href="tel:+79203591687">
+                                +7 (920) 359-16-87
+                            </a>
+                        </p>
+                        <p className="text-[10px] md:text-[15px] xl:text-[20px] 
+                                     mb-2 lg:mb-[16px]">
+                            <strong>Email: </strong> 
+                            <a className="pointer decoration-[#07162C] decoration-3 
+                                       hover:underline underline-offset-3" 
+                               href="mailto:maxim.e@trans-eu.ru">
+                                maxim.e@trans-eu.ru
                             </a>
                         </p>
                         <p className="text-[10px] md:text-[15px] xl:text-[20px]">
